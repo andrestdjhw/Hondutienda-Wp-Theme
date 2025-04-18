@@ -176,7 +176,7 @@
                                 </span>
                                 Carrito
                             </a>
-                            <a href="<?php echo esc_url(home_url('/pago')); ?>" class="flex items-center <?php echo is_page('pago') ? 'active-nav-item' : 'link-hover text-black hover:text-black'; ?> px-1 pt-1 text-sm font-medium transition-all">
+                            <a href="<?php echo esc_url(home_url('/pago')); ?>" class="flex items-center <?php echo is_page('pagos') ? 'active-nav-item' : 'link-hover text-black hover:text-black'; ?> px-1 pt-1 text-sm font-medium transition-all">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                                     <line x1="1" y1="10" x2="23" y2="10"></line>

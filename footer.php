@@ -11,7 +11,7 @@
         <img src="<?php echo $logo_url; ?>" alt="Logo del sitio" class="w-16 h-16 object-contain mb-4 mx-auto md:mx-0">
         <h2 class="text-2xl font-bold text-white mb-2"><?php bloginfo('name'); ?></h2>
         <p class="text-sm text-gray-400 max-w-md mb-4">
-          Tu sitio de confianza para contenido increíble. Conéctate con nosotros y descubre el flow digital que transforma experiencias.
+        Nuestra tienda nacio en el verano del 2020. Siempre hemos querido que lo nuestro esta a tu alcance!.
         </p>
         <p class="text-xs text-yellow-400 font-semibold italic">¡Hondutienda: Donde la confianza se encuentra con la innovación!</p>
       </div>
