@@ -16,103 +16,35 @@
     <?php wp_head(); ?>
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Add custom Tailwind configuration -->
+    <!-- Custom Tailwind configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#57D0E1',
-                        secondary: '#FCC404',
-                        accent: '#0090D9',
-                        dark: '#333333',
-                        light: '#F9FAFB'
+                        primary: '#1E40AF', // Deep blue for a modern feel
+                        secondary: '#FBBF24', // Vibrant yellow for highlights
+                        accent: '#10B981', // Fresh green for buttons/icons
+                        dark: '#111827', // Near-black for footer bg
+                        light: '#F9FAFB' // Light gray for backgrounds
                     },
                     boxShadow: {
-                        'nav': '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-                        'glow': '0 0 15px rgba(87, 208, 225, 0.4)'
+                        'custom': '0 4px 12px rgba(0, 0, 0, 0.1)',
+                        'hover': '0 6px 16px rgba(0, 0, 0, 0.15)'
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 0.3s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
                     }
                 }
             }
         }
     </script>
-    <style>
-        /* Custom animations and styles */
-        .link-hover {
-            position: relative;
-        }
-        .link-hover::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #FCC404;
-            transition: width 0.3s ease;
-        }
-        .link-hover:hover::after {
-            width: 100%;
-        }
-        
-        /* Add depth with subtle shadow to navigation */
-        .nav-shadow {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
-        
-        /* Smooth transitions */
-        .transition-all {
-            transition: all 0.3s ease;
-        }
-        
-        /* Mobile menu animation */
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .slide-down {
-            animation: slideDown 0.3s ease forwards;
-        }
-        
-        /* Active state styling */
-        .active-nav-item {
-            font-weight: 600;
-            color: #FCC404;
-            position: relative;
-        }
-        .active-nav-item::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #FCC404;
-        }
-        
-        /* Cart badge */
-        .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 18px;
-            height: 18px;
-            background-color: #FCC404;
-            border-radius: 50%;
-            font-size: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            font-weight: bold;
-        }
-        
-        /* Logo hover effect */
-        .logo-hover:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-    </style>
 </head>
 
 <body <?php body_class(); ?>>
@@ -120,164 +52,142 @@
 <div id="page" class="site bg-light min-h-screen font-sans">
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'your-theme-name'); ?></a>
 
-    <header id="masthead" class="site-header sticky top-0 z-50">
-        <nav class="bg-gradient-to-r from-primary to-accent nav-shadow">
+    <header id="masthead" class="site-header sticky top-0 z-50 bg-white">
+        <nav class="border-b border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16">
-                    <!-- Logo and desktop navigation -->
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 flex items-center logo-hover">
-                            <?php
-                            if (has_custom_logo()) :
-                                the_custom_logo();
-                            else :
+                <div class="flex items-center justify-between h-24">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center transform transition-transform hover:scale-105">
+                            <?php 
+                                $uploads = wp_upload_dir();
+                                $logo_url = esc_url($uploads['baseurl'] . '/2025/04/Recurso-27-300x169.png');
                             ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>" class="text-black font-bold text-xl transition-all hover:text-secondary">
-                                    <?php bloginfo('name'); ?>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                        <div class="hidden md:ml-8 md:flex md:space-x-8">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center <?php echo is_front_page() ? 'active-nav-item' : 'link-hover text-black hover:text-black'; ?> px-1 pt-1 text-sm font-medium transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                                Inicio
-                            </a>
-                            <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center <?php echo is_page('tienda') ? 'active-nav-item' : 'link-hover text-black hover:text-black'; ?> px-1 pt-1 text-sm font-medium transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 3h18v18H3zM3 9h18M9 21V9"></path>
-                                </svg>
-                                Tienda
-                            </a>
-                            <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center <?php echo is_page('nosotros') ? 'active-nav-item' : 'link-hover text-black hover:text-black'; ?> px-1 pt-1 text-sm font-medium transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                                Nosotros
-                            </a>
-                            <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="flex items-center <?php echo is_page('carrito') ? 'active-nav-item' : 'link-hover text-black hover:text-black'; ?> px-1 pt-1 text-sm font-medium transition-all">
-                                <span class="relative">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="9" cy="21" r="1"></circle>
-                                        <circle cx="20" cy="21" r="1"></circle>
-                                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                    </svg>
-                                    <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
-                                        <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
-                                        <?php if ($cart_count > 0) : ?>
-                                            <span class="cart-badge"><?php echo esc_html($cart_count); ?></span>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                </span>
-                                Carrito
-                            </a>
-                            <a href="<?php echo esc_url(home_url('/pago')); ?>" class="flex items-center <?php echo is_page('pagos') ? 'active-nav-item' : 'link-hover text-black hover:text-black'; ?> px-1 pt-1 text-sm font-medium transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                    <line x1="1" y1="10" x2="23" y2="10"></line>
-                                </svg>
-                                Pago
-                            </a>
-                        </div>
+                            <img src="<?php echo $logo_url; ?>" alt="Hondutienda Logo" class="h-16 w-auto object-contain">
+                        </a>
                     </div>
-                    
-                    <!-- Shopping cart icon for quick access -->
-                    <div class="flex items-center">
-                        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="p-2 text-black hover:text-secondary transition-all relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex items-center space-x-10">
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_front_page() ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+                            </svg>
+                            <span>Inicio</span>
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <span>Tienda</span>
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('nosotros') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                            <span>Nosotros</span>
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors relative <?php echo is_page('carrito') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <span>Carrito</span>
+                            <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
+                                <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
+                                <?php if ($cart_count > 0) : ?>
+                                    <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </a>
+                    </div>
+
+                    <!-- Right Side: Search, Cart, and Mobile Menu Toggle -->
+                    <div class="flex items-center space-x-4">
+                        <!-- Search Icon -->
+                        <button id="search-toggle" class="p-2 text-dark hover:text-secondary transition-colors" aria-label="Toggle search">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0-5.65a7 7 0 10-14 0 7 7 0 0014 0z"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Cart Icon -->
+                        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="p-2 text-dark hover:text-secondary transition-colors relative" aria-label="Cart">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                             <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
                                 <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
                                 <?php if ($cart_count > 0) : ?>
-                                    <span class="cart-badge"><?php echo esc_html($cart_count); ?></span>
+                                    <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
                                 <?php endif; ?>
                             <?php endif; ?>
                         </a>
-                        
-                        <!-- Mobile menu button -->
-                        <div class="md:hidden">
-                            <button id="mobile-menu-toggle" class="p-2 rounded-md text-black hover:text-secondary focus:outline-none transition-all ml-2 hover:shadow-glow" aria-expanded="false" aria-controls="mobile-menu">
-                                <svg xmlns="http://www.w3.org/2000/svg" id="menu-open-icon" class="block h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                                    <line x1="3" y1="18" x2="21" y2="18"></line>
+
+                        <!-- Mobile Menu Toggle -->
+                        <div class="lg:hidden">
+                            <button id="mobile-menu-toggle" class="p-2 text-dark hover:text-secondary transition-colors" aria-expanded="false" aria-controls="mobile-menu">
+                                <svg id="menu-open-icon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" id="menu-close-icon" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Mobile menu, show/hide based on menu state. -->
-            <div id="mobile-menu" class="hidden md:hidden slide-down">
-                <div class="px-2 pt-2 pb-3 space-y-1 bg-white rounded-b-lg shadow-lg">
-                    <a href="<?php echo esc_url(home_url('/')); ?>" class="<?php echo is_front_page() ? 'bg-accent text-black' : 'text-dark hover:bg-gray-100'; ?> block px-3 py-3 rounded-md text-base font-medium transition-all">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                <!-- Search Bar Mejorado con botón de mejor contraste -->
+                <div id="search-bar" class="hidden bg-white p-6 shadow-lg rounded-b-lg border-t border-gray-100 animate-fadeIn">
+                    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex items-center max-w-2xl mx-auto">
+                        <div class="relative flex-grow">
+                            <input type="search" name="s" placeholder="¿Qué estás buscando hoy?" 
+                                class="w-full p-3 pl-12 rounded-l-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300"
+                                autocomplete="off">
+                            <svg class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0-5.65a7 7 0 10-14 0 7 7 0 0014 0z"></path>
                             </svg>
-                            Inicio
                         </div>
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="<?php echo is_page('tienda') ? 'bg-accent text-black' : 'text-dark hover:bg-gray-100'; ?> block px-3 py-3 rounded-md text-base font-medium transition-all">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 3h18v18H3zM3 9h18M9 21V9"></path>
+                        <button type="submit" class="bg-secondary py-3 px-6 rounded-r-full text-dark font-bold hover:bg-secondary hover:bg-opacity-80 hover:shadow-md transform transition-all duration-300 hover:-translate-y-0.5">
+                            Buscar
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-custom">
+                    <div class="px-4 py-6 space-y-4">
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_front_page() ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
                             </svg>
-                            Tienda
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="<?php echo is_page('nosotros') ? 'bg-accent text-black' : 'text-dark hover:bg-gray-100'; ?> block px-3 py-3 rounded-md text-base font-medium transition-all">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <span>Inicio</span>
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
-                            Nosotros
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="<?php echo is_page('carrito') ? 'bg-accent text-black' : 'text-dark hover:bg-gray-100'; ?> block px-3 py-3 rounded-md text-base font-medium transition-all">
-                        <div class="flex items-center">
-                            <span class="relative">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
-                                    <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
-                                    <?php if ($cart_count > 0) : ?>
-                                        <span class="cart-badge"><?php echo esc_html($cart_count); ?></span>
-                                    <?php endif; ?>
+                            <span>Tienda</span>
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('nosotros') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                            <span>Nosotros</span>
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors relative <?php echo is_page('carrito') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <span>Carrito</span>
+                            <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
+                                <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
+                                <?php if ($cart_count > 0) : ?>
+                                    <span class="absolute top-1 right-3 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
                                 <?php endif; ?>
-                            </span>
-                            Carrito
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/pago')); ?>" class="<?php echo is_page('pago') ? 'bg-accent text-black' : 'text-dark hover:bg-gray-100'; ?> block px-3 py-3 rounded-md text-base font-medium transition-all">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Pago
-                        </div>
-                    </a>
+                            <?php endif; ?>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -289,53 +199,62 @@
                 <!-- Main content starts here -->
 
 <script>
-    // Mobile menu toggle functionality with enhanced animations
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuOpenIcon = document.getElementById('menu-open-icon');
-        const menuCloseIcon = document.getElementById('menu-close-icon');
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = document.getElementById('menu-open-icon');
+    const menuCloseIcon = document.getElementById('menu-close-icon');
 
-        if (mobileMenuToggle && mobileMenu && menuOpenIcon && menuCloseIcon) {
-            mobileMenuToggle.addEventListener('click', function() {
-                const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-                
-                mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
-                
-                if (isExpanded) {
-                    // Animate closing
-                    mobileMenu.style.opacity = '0';
-                    mobileMenu.style.transform = 'translateY(-10px)';
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 200);
-                } else {
-                    // Animate opening
-                    mobileMenu.classList.remove('hidden');
-                    setTimeout(() => {
-                        mobileMenu.style.opacity = '1';
-                        mobileMenu.style.transform = 'translateY(0)';
-                    }, 10);
-                }
-                
-                // Toggle icons
-                menuOpenIcon.classList.toggle('hidden');
-                menuOpenIcon.classList.toggle('block');
-                menuCloseIcon.classList.toggle('hidden');
-                menuCloseIcon.classList.toggle('block');
-            });
-        }
-        
-        // Optional: Add scroll behavior to make navbar change on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('masthead');
-            if (header) {
-                if (window.scrollY > 20) {
-                    header.classList.add('shadow-md');
-                } else {
-                    header.classList.remove('shadow-md');
-                }
+    if (mobileMenuToggle && mobileMenu && menuOpenIcon && menuCloseIcon) {
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+            mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            menuOpenIcon.classList.toggle('hidden');
+            menuOpenIcon.classList.toggle('block');
+            menuCloseIcon.classList.toggle('hidden');
+            menuCloseIcon.classList.toggle('block');
+        });
+    }
+
+    // Search bar toggle mejorado
+    const searchToggle = document.getElementById('search-toggle');
+    const searchBar = document.getElementById('search-bar');
+    const searchInput = searchBar ? searchBar.querySelector('input[type="search"]') : null;
+
+    if (searchToggle && searchBar && searchInput) {
+        searchToggle.addEventListener('click', function() {
+            searchBar.classList.toggle('hidden');
+            if (!searchBar.classList.contains('hidden')) {
+                // Focus en el input cuando se abre la barra de búsqueda
+                setTimeout(() => {
+                    searchInput.focus();
+                }, 100);
             }
         });
+        
+        // Cerrar con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !searchBar.classList.contains('hidden')) {
+                searchBar.classList.add('hidden');
+            }
+        });
+        
+        // Click fuera para cerrar
+        document.addEventListener('click', function(e) {
+            if (!searchBar.contains(e.target) && !searchToggle.contains(e.target) && !searchBar.classList.contains('hidden')) {
+                searchBar.classList.add('hidden');
+            }
+        });
+    }
+
+    // Add shadow on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('masthead');
+        if (header) {
+            header.classList.toggle('shadow-custom', window.scrollY > 20);
+        }
     });
+});
 </script>
