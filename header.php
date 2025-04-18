@@ -24,7 +24,7 @@
                     colors: {
                         primary: '#1E40AF', // Deep blue for a modern feel
                         secondary: '#FBBF24', // Vibrant yellow for highlights
-                        accent: '#10B981', // Fresh green for buttons/icons
+                        accent: '#FBBF24', // Changed to golden yellow to match secondary
                         dark: '#111827', // Near-black for footer bg
                         light: '#F9FAFB' // Light gray for backgrounds
                     },
