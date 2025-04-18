@@ -24,7 +24,7 @@
                     colors: {
                         primary: '#1E40AF', // Deep blue for a modern feel
                         secondary: '#FBBF24', // Vibrant yellow for highlights
-                        accent: '#FBBF24', // Changed to golden yellow to match secondary
+                        accent: '#FBBF24', // Golden yellow to match secondary
                         dark: '#111827', // Near-black for footer bg
                         light: '#F9FAFB' // Light gray for backgrounds
                     },
@@ -77,12 +77,12 @@
                         </a>
                         <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18M6 3v18M18 3v18M9 9h6M9 15h6"></path>
                             </svg>
                             <span>Tienda</span>
                         </a>
                         <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('nosotros') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 22" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                             </svg>
                             <span>Nosotros</span>
@@ -165,7 +165,7 @@
                         </a>
                         <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18M6 3v18M18 3v18M9 9h6M9 15h6"></path>
                             </svg>
                             <span>Tienda</span>
                         </a>
