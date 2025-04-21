@@ -63,22 +63,24 @@ get_header(); ?>
             </div>
 
             <!-- Image Section -->
-            <div class="relative">
-                <?php 
-                    $nosotros_image = get_theme_mod('nosotros_image_url', '/wp-content/uploads/2025/04/Recurso-26-768x431.png');
-                    $default_image = get_template_directory_uri() . '/assets/images/nosotros-placeholder.jpg';
-                    $image_to_display = $nosotros_image ?: $default_image;
-                ?>
-                <img 
-                    src="<?php echo esc_url($image_to_display); ?>" 
-                    alt="Sobre Hondutienda" 
-                    class="bg-center rounded-lg shadow-custom w-full object-cover p-6"
-                />
-                <div class="absolute -bottom-6 -right-6 bg-secondary p-6 rounded-lg shadow-lg text-dark">
-                    <p class="text-3xl font-bold"><?php echo date('Y') - 2020; ?>+</p>
-                    <p class="text-sm font-medium">Años de experiencia</p>
-                </div>
-            </div>
+            <div class="relative">                 
+            <?php                      
+                $nosotros_image = get_theme_mod('nosotros_image_url', '/wp-content/uploads/2025/04/Recurso-26-768x431.png');                     
+                $default_image = get_template_directory_uri() . '/assets/images/nosotros-placeholder.jpg';                     
+                $image_to_display = $nosotros_image ?: $default_image;                 
+            ?>                 
+            <img                      
+                src="<?php echo esc_url($image_to_display); ?>"                      
+                alt="Sobre Hondutienda"                      
+                class="bg-center rounded-lg shadow-custom w-full object-cover p-6"                 
+            />                 
+            <div class="absolute -bottom-6 right-0 sm:-right-10 md:-right-6 lg:-right-12 bg-secondary p-4 sm:p-6 rounded-lg shadow-lg text-dark">                     
+                <p class="text-2xl sm:text-3xl font-bold"><?php echo date('Y') - 2020; ?>+</p>                     
+                <p class="text-xs sm:text-sm font-medium">Años de experiencia</p>                 
+            </div>             
+        </div>
+
+
         </div>
 
         <!-- Values Section -->
