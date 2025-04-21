@@ -72,7 +72,7 @@ get_header(); ?>
                 <img 
                     src="<?php echo esc_url($image_to_display); ?>" 
                     alt="Sobre Hondutienda" 
-                    class="rounded-lg shadow-custom w-full object-cover"
+                    class="bg-center rounded-lg shadow-custom w-full object-cover p-6"
                 />
                 <div class="absolute -bottom-6 -right-6 bg-secondary p-6 rounded-lg shadow-lg text-dark">
                     <p class="text-3xl font-bold"><?php echo date('Y') - 2020; ?>+</p>
