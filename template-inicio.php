@@ -53,39 +53,38 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Featured Categories -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 animate-fadeIn">Explora Nuestras Categorías</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <?php
-                    $categories = array(
-                        array('name' => 'Alimentos', 'icon' => '🍔', 'color' => 'bg-red-100'),
-                        array('name' => 'Bebidas', 'icon' => '🥤', 'color' => 'bg-blue-100'),
-                        array('name' => 'Limpieza', 'icon' => '🧼', 'color' => 'bg-green-100'),
-                        array('name' => 'Cuidado Personal', 'icon' => '🧴', 'color' => 'bg-purple-100'),
-                        array('name' => 'Snacks', 'icon' => '🍫', 'color' => 'bg-yellow-100'),
-                        array('name' => 'Hogar', 'icon' => '🏠', 'color' => 'bg-indigo-100'),
-                        array('name' => 'Electrónica', 'icon' => '📱', 'color' => 'bg-gray-100'),
-                        array('name' => 'Otros', 'icon' => '📦', 'color' => 'bg-pink-100')
-                    );
-                    
-                    foreach($categories as $index => $category) : ?>
-                    <a 
-                        href="/tienda?category=<?php echo strtolower(str_replace(' ', '-', $category['name'])); ?>" 
-                        class="block p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 text-center transform hover:-translate-y-1 animate-fadeIn delay-<?php echo ($index % 4) * 100; ?>"
-                    >
-                        <div class="w-16 h-16 mx-auto mb-4 rounded-full <?php echo $category['color']; ?> flex items-center justify-center text-3xl">
-                            <?php echo $category['icon']; ?>
-                        </div>
-                        <h3 class="font-bold text-gray-800"><?php echo $category['name']; ?></h3>
-                    </a>
-                <?php endforeach; ?>
-            </div>
+   <!-- Featured Categories -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12 animate-fadeIn">Explora Nuestras Categorías</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <?php
+                $categories = array(
+                    array('name' => 'Alimentos', 'icon' => '🍔', 'color' => 'bg-red-100', 'hover' => 'bg-red-200'),
+                    array('name' => 'Bebidas', 'icon' => '🥤', 'color' => 'bg-blue-100', 'hover' => 'bg-blue-200'),
+                    array('name' => 'Limpieza', 'icon' => '🧼', 'color' => 'bg-green-100', 'hover' => 'bg-green-200'),
+                    array('name' => 'Cuidado Personal', 'icon' => '🧴', 'color' => 'bg-purple-100', 'hover' => 'bg-purple-200'),
+                    array('name' => 'Snacks', 'icon' => '🍫', 'color' => 'bg-yellow-100', 'hover' => 'bg-yellow-200'),
+                    array('name' => 'Hogar', 'icon' => '🏠', 'color' => 'bg-indigo-100', 'hover' => 'bg-indigo-200'),
+                    array('name' => 'Electrónica', 'icon' => '📱', 'color' => 'bg-gray-100', 'hover' => 'bg-gray-200'),
+                    array('name' => 'Otros', 'icon' => '📦', 'color' => 'bg-pink-100', 'hover' => 'bg-pink-200')
+                );
+                
+                foreach($categories as $index => $category) : ?>
+                <a 
+                    href="/tienda?category=<?php echo strtolower(str_replace(' ', '-', $category['name'])); ?>" 
+                    class="block p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 text-center transform hover:-translate-y-1 animate-fadeIn delay-<?php echo ($index % 4) * 100; ?> <?php echo $category['color']; ?> hover:<?php echo $category['hover']; ?>"
+                >
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full <?php echo $category['color']; ?> hover:<?php echo $category['hover']; ?> flex items-center justify-center text-3xl transition-colors duration-300">
+                        <?php echo $category['icon']; ?>
+                    </div>
+                    <h3 class="font-bold text-gray-800"><?php echo $category['name']; ?></h3>
+                </a>
+            <?php endforeach; ?>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Featured Products -->
     <section id="featured" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -164,7 +163,7 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Promo Banner -->
+    <!--  Banner -->
     <section class="py-12 bg-gradient-to-r from-primary to-blue-600 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
