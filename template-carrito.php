@@ -36,7 +36,7 @@ get_header(); ?>
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <?php if(false) : // Cambiar a true cuando hay productos ?>
+        <?php if(true) : // Cambiar a true cuando hay productos ?>
         <!-- Cart with Items -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn">
             <!-- Cart Items -->
@@ -245,10 +245,10 @@ get_header(); ?>
                         </button>
                         
                         <div class="mt-6 flex items-center justify-center space-x-4">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/payment-methods/visa.png" alt="Visa" class="h-8">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/payment-methods/mastercard.png" alt="Mastercard" class="h-8">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/payment-methods/american-express.png" alt="American Express" class="h-8">
-                        </div>
+    <i class="fab fa-cc-visa text-blue-600 text-2xl"></i>
+    <i class="fab fa-cc-mastercard text-red-500 text-2xl"></i>
+    <i class="fab fa-cc-amex text-blue-400 text-2xl"></i>
+</div>
                     </div>
                 </div>
             </div>
@@ -274,17 +274,6 @@ get_header(); ?>
             >
                 Ir a la Tienda
             </a>
-            
-            <div class="mt-12 border-t border-gray-200 pt-12">
-                <h3 class="text-xl font-bold text-gray-800 mb-6">¿Ya tienes una cuenta?</h3>
-                <p class="text-gray-600 mb-6">Inicia sesión para ver los productos que guardaste anteriormente</p>
-                <a 
-                    href="/mi-cuenta" 
-                    class="inline-block border-2 border-primary text-primary font-bold py-2 px-6 rounded-full hover:bg-primary hover:text-white transition-colors duration-300"
-                >
-                    Iniciar Sesión
-                </a>
-            </div>
         </div>
         <?php endif; ?>
     </div>

@@ -163,27 +163,96 @@ get_header(); ?>
         </div>
     </section>
 
-    <!--  Banner -->
-    <section class="py-12 bg-gradient-to-r from-primary to-blue-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div class="text-center md:text-left animate-fadeIn">
-                    <h3 class="text-2xl font-bold mb-2">¡Envío Gratis!</h3>
-                    <p class="opacity-90">En compras mayores a L 500 en Tegucigalpa</p>
-                </div>
-                
-                <div class="relative h-16 md:h-24 animate-bounce">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/delivery-truck.png" alt="Envío Gratis" class="h-full mx-auto">
-                </div>
-                
-                <div class="text-center md:text-right animate-fadeIn delay-100">
-                    <a href="/tienda?promo=envio-gratis" class="inline-block bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors duration-300">
-                        Aprovechar Oferta
-                    </a>
-                </div>
-            </div>
+    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 animate-fadeIn">
+                Explora <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">Nuestras Categorías</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto animate-fadeIn delay-100">
+                Descubre los mejores productos organizados para tu conveniencia
+            </p>
         </div>
-    </section>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Categoría 1 -->
+            <a href="/categoria/alimentos" class="group relative bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn p-6 flex flex-col items-center justify-center text-center border-2 border-yellow-100 hover:border-yellow-300">
+                <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-yellow-200 transition-colors duration-300">
+                    <span class="text-3xl">🍎</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Alimentos</h3>
+                <span class="mt-2 text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">+120 productos</span>
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+            
+            <!-- Categoría 2 -->
+            <a href="/categoria/bebidas" class="group relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-100 p-6 flex flex-col items-center justify-center text-center border-2 border-blue-100 hover:border-blue-300">
+                <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors duration-300">
+                    <span class="text-3xl">🥤</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Bebidas</h3>
+                <span class="mt-2 text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">+85 productos</span>
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+            
+            <!-- Categoría 3 -->
+            <a href="/categoria/limpieza" class="group relative bg-gradient-to-br from-green-50 to-green-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-200 p-6 flex flex-col items-center justify-center text-center border-2 border-green-100 hover:border-green-300">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors duration-300">
+                    <span class="text-3xl">🧼</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Limpieza</h3>
+                <span class="mt-2 text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">+65 productos</span>
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+            
+            <!-- Categoría 4 -->
+            <a href="/categoria/cuidado-personal" class="group relative bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-300 p-6 flex flex-col items-center justify-center text-center border-2 border-purple-100 hover:border-purple-300">
+                <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors duration-300">
+                    <span class="text-3xl">🧴</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Cuidado Personal</h3>
+                <span class="mt-2 text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">+92 productos</span>
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+        </div>
+        
+        <div class="text-center mt-12 animate-fadeIn delay-400">
+            <a href="/categorias" class="inline-flex items-center border-2 border-primary text-primary font-bold py-3 px-8 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                Ver todas las categorías
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fadeIn {
+        animation: fadeIn 0.6s ease forwards;
+    }
+    
+    .delay-100 {
+        animation-delay: 0.1s;
+    }
+    
+    .delay-200 {
+        animation-delay: 0.2s;
+    }
+    
+    .delay-300 {
+        animation-delay: 0.3s;
+    }
+    
+    .delay-400 {
+        animation-delay: 0.4s;
+    }
+</style>
 
     <!-- Why Choose Us -->
     <section class="py-16 bg-white">
