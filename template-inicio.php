@@ -38,7 +38,7 @@ get_header(); ?>
                 
                 <!-- Hero Image with Floating Animation -->
                 <div class="relative hidden md:block animate-float">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-products.png" alt="Productos Hondutienda" class="w-full max-w-md mx-auto">
+                    <img src="/wp-content/uploads/2025/04/Recurso-29.png" alt="Productos Hondutienda" class="w-full max-w-md mx-auto">
                     <div class="absolute -top-6 -left-6 w-24 h-24 bg-yellow-400 rounded-full opacity-20 animate-ping"></div>
                     <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-blue-300 rounded-full opacity-20 animate-ping" style="animation-delay: 1s;"></div>
                 </div>
@@ -101,24 +101,24 @@ get_header(); ?>
                             'name' => 'Café Hondureño Premium',
                             'price' => 'L 120',
                             'old_price' => 'L 150',
-                            'image' => get_template_directory_uri() . '/assets/images/products/coffee.jpg',
+                            'image' => get_template_directory_uri() . '/assets/images/products/Cafe_H_Premiun-768x768.webp',
                             'tag' => 'Oferta'
                         ),
                         array(
                             'name' => 'Jabón de Tocador',
                             'price' => 'L 25',
-                            'image' => get_template_directory_uri() . '/assets/images/products/soap.jpg'
+                            'image' => get_template_directory_uri() . '/assets/images/products/Jabon_H_tocador-768x768.webp'
                         ),
                         array(
                             'name' => 'Galletas María',
                             'price' => 'L 45',
-                            'image' => get_template_directory_uri() . '/assets/images/products/cookies.jpg'
+                            'image' => get_template_directory_uri() . '/assets/images/products/Galletas_H_Maria-768x768.webp'
                         ),
                         array(
                             'name' => 'Refresco en Lata',
                             'price' => 'L 30',
                             'old_price' => 'L 35',
-                            'image' => get_template_directory_uri() . '/assets/images/products/soda.jpg',
+                            'image' => get_template_directory_uri() . '/assets/images/products/Refresco_Lata_12Unidades-768x533.jpg',
                             'tag' => 'Popular'
                         )
                     );
