@@ -1,4 +1,8 @@
 <?php
+/**
+ * Template Name: Tienda Template
+ * Template Post Type: page
+ */
 get_header(); ?>
 
 <div class="tienda-page">

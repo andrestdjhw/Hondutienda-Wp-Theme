@@ -1,4 +1,8 @@
 <?php
+/**
+ * Template Name: Carrito Template
+ * Template Post Type: page
+ */
 get_header(); ?>
 
 <div class="cart-page">
