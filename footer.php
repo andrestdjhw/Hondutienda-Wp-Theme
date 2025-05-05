@@ -44,10 +44,9 @@
     <!-- Social Media -->
     <div class="border-t border-gray-800 mt-12 pt-8">
       <div class="flex justify-center space-x-6 text-xl">
-        <a href="#" class="hover:text-yellow-400 transform hover:scale-110 transition duration-300 ease-in-out" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-yellow-400 transform hover:scale-110 transition duration-300 ease-in-out" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="hover:text-yellow-400 transform hover:scale-110 transition duration-300 ease-in-out" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-yellow-400 transform hover:scale-110 transition duration-300 ease-in-out" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/share/1AHeE5h9t9/?mibextid=wwXIfr" class="hover:text-yellow-400 transform hover:scale-110 transition duration-300 ease-in-out" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@hondutienda?_t=ZM-8w6lOo4sSb1&_r=1" class="hover:text-yellow-400 transform hover:scale-110 transition duration-300 ease-in-out" aria-label="Tik Tok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/hondutienda?igsh=YWhiZ3hkMmV0aTFl" class="hover:text-yellow-400 transform hover:scale-110 transition duration-300 ease-in-out" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
 

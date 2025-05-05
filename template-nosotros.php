@@ -127,19 +127,19 @@ get_header(); ?>
                 <?php
                     $team_members = array(
                         array(
-                            'name' => 'Ana González',
+                            'name' => 'Griselda Chávez',
                             'position' => 'Fundadora & CEO',
-                            'image' => get_template_directory_uri() . '/assets/images/team/ana.jpg'
+                            'image' => get_template_directory_uri() . '/assets/images/team/griselda.jpg'
                         ),
                         array(
-                            'name' => 'Carlos Martínez',
-                            'position' => 'Director de Operaciones',
-                            'image' => get_template_directory_uri() . '/assets/images/team/carlos.jpg'
+                            'name' => 'Nicholas Chávez',
+                            'position' => 'Gerente de Operaciones',
+                            'image' => get_template_directory_uri() . '/assets/images/team/nicholas.jpg'
                         ),
                         array(
-                            'name' => 'María Rodríguez',
-                            'position' => 'Gerente de Atención al Cliente',
-                            'image' => get_template_directory_uri() . '/assets/images/team/maria.jpg'
+                            'name' => 'Elyn Sánchez',
+                            'position' => 'Atención al Cliente',
+                            'image' => get_template_directory_uri() . '/assets/images/team/elyn.jpg'
                         )
                     );
 

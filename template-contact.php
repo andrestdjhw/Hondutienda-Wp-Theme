@@ -62,7 +62,7 @@ get_header(); ?>
                         </div>
                         <div class="ml-4">
                             <h3 class="text-lg font-semibold mb-1">Email</h3>
-                            <p class="text-gray-600">contacto@hondutienda.com</p>
+                            <p class="text-gray-600">info@hondutienda.com</p>
                         </div>
                     </div>
                     
@@ -75,7 +75,7 @@ get_header(); ?>
                         </div>
                         <div class="ml-4">
                             <h3 class="text-lg font-semibold mb-1">Teléfono</h3>
-                            <p class="text-gray-600">+504 9999-9999</p>
+                            <p class="text-gray-600">+1 823-596-3738</p>
                         </div>
                     </div>
                     
@@ -89,7 +89,7 @@ get_header(); ?>
                         </div>
                         <div class="ml-4">
                             <h3 class="text-lg font-semibold mb-1">Ubicación</h3>
-                            <p class="text-gray-600">Tegucigalpa, Honduras</p>
+                            <p class="text-gray-600">1018 W Greens RD, Houston, TX 77067, US</p>
                         </div>
                     </div>
                     
@@ -102,8 +102,8 @@ get_header(); ?>
                         </div>
                         <div class="ml-4">
                             <h3 class="text-lg font-semibold mb-1">Horario</h3>
-                            <p class="text-gray-600">Lun - Sáb: 9:00 AM - 6:00 PM</p>
-                            <p class="text-gray-600">Dom: Cerrado</p>
+                            <p class="text-gray-600">Lun - Jue: 10:00 AM - 10:00 PM</p>
+                            <p class="text-gray-600">Vie - Dom: 10:00 AM - 11:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -112,17 +112,14 @@ get_header(); ?>
                 <div class="bg-white rounded-lg shadow-custom p-8 mt-8">
                     <h2 class="text-2xl font-bold mb-6">Síguenos</h2>
                     <div class="flex space-x-4">
-                        <a href="#" class="bg-gray-100 hover:bg-secondary text-dark hover:text-white p-3 rounded-full transition-colors duration-300">
+                        <a href="https://www.facebook.com/share/1AHeE5h9t9/?mibextid=wwXIfr" class="bg-gray-100 hover:bg-secondary text-dark hover:text-white p-3 rounded-full transition-colors duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="bg-gray-100 hover:bg-secondary text-dark hover:text-white p-3 rounded-full transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://www.tiktok.com/@hondutienda?_t=ZM-8w6lOo4sSb1&_r=1" class="bg-gray-100 hover:bg-secondary text-dark hover:text-white p-3 rounded-full transition-colors duration-300">
+                            <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="#" class="bg-gray-100 hover:bg-secondary text-dark hover:text-white p-3 rounded-full transition-colors duration-300">
+                        <a href="https://www.instagram.com/hondutienda?igsh=YWhiZ3hkMmV0aTFl" class="bg-gray-100 hover:bg-secondary text-dark hover:text-white p-3 rounded-full transition-colors duration-300">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="bg-gray-100 hover:bg-secondary text-dark hover:text-white p-3 rounded-full transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
@@ -216,9 +213,18 @@ get_header(); ?>
             <div class="bg-white rounded-lg shadow-custom overflow-hidden">
                 <div class="aspect-w-16 aspect-h-9">
                     <!-- Placeholder for Google Maps iframe -->
-                    <div class="bg-gray-200 flex items-center justify-center" style="height: 400px;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.1720470664974!2d-95.4454618!3d29.9393398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640cfc1fd69ee6f%3A0x57f8c9f2ea5acac2!2s1018%20W%20Greens%20Rd%2C%20Houston%2C%20TX%2077067%2C%20EE.%20UU.!5e0!3m2!1ses!2sus!4v1714943852615!5m2!1ses!2sus" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <!-- <div class="bg-gray-200 flex items-center justify-center" style="height: 400px;">
                         <p class="text-gray-600">Mapa de ubicación</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>

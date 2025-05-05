@@ -85,55 +85,97 @@ get_header(); ?>
             <?php
                 $products = array(
                     array(
-                        'name' => 'Café Hondureño Premium 250g',
-                        'price' => 'L 120',
-                        'old_price' => 'L 150',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Cafe_H_Premiun-768x768.webp',
+                        'name' => 'ALKA',
+                        'price' => '$ 7',
+                        'old_price' => '$ 10',
+                        'image' => get_template_directory_uri() . '/assets/images/products/ALKA-ICE-300x300.webp',
                         'tag' => 'Oferta',
                         'rating' => 4
                     ),
                     array(
-                        'name' => 'Jabón de Tocador x6 unidades',
-                        'price' => 'L 65',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Jabon_H_tocador-768x768.webp',
+                        'name' => 'BON o BON',
+                        'price' => '$ 14.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Bon-O-Bon-768x768.png',
                         'rating' => 5
                     ),
                     array(
-                        'name' => 'Galletas María paquete familiar',
-                        'price' => 'L 45',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Galletas_H_Maria-768x768.webp',
+                        'name' => 'Bubbaloo Chicle',
+                        'price' => '$ 7.49',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Bobbaloo-Tuti-Fruti-768x768.png',
                         'rating' => 4
                     ),
                     array(
-                        'name' => 'Refresco en Lata 12 unidades',
-                        'price' => 'L 320',
-                        'old_price' => 'L 350',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Refresco_Lata_12Unidades-768x533.jpg',
+                        'name' => 'Camisa de Manta Hondureño',
+                        'price' => '$ 35.99',
+                        'old_price' => '$ 44.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Camisa_Hondurena-768x1024.jpeg',
                         'tag' => 'Popular',
                         'rating' => 5
                     ),
                     array(
-                        'name' => 'Aceite Vegetal 900ml',
-                        'price' => 'L 85',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Aceite_Vegetal-768x768.webp',
+                        'name' => 'Chiclin',
+                        'price' => '$ 9.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Chiclin-Cereza-768x768.png',
                         'rating' => 3
                     ),
                     array(
-                        'name' => 'Arroz Integral 1kg',
-                        'price' => 'L 55',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Arroz_Integral-768x768.webp',
+                        'name' => 'Cornflakes FANS',
+                        'price' => '$ 13.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Corn-Flakes-Fans-768x768.png',
                         'rating' => 4
                     ),
                     array(
-                        'name' => 'Frijoles Rojos 1kg',
-                        'price' => 'L 70',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Frijoles_Rojos-768x768.webp',
+                        'name' => 'Futbolito',
+                        'price' => '$ 3.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Futbolitos-Rica-Sula-768x768.png',
                         'rating' => 5
                     ),
                     array(
-                        'name' => 'Pasta Spaghetti 500g',
-                        'price' => 'L 40',
-                        'image' => get_template_directory_uri() . '/assets/images/products/Pasta_Spaguetti-768x768.webp',
+                        'name' => 'Manita de la Suerte',
+                        'price' => '$ 11.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Manita-Vero-768x768.png',
+                        'rating' => 4
+                    ),
+                    array(
+                        'name' => 'Mantequilla Pozuelo',
+                        'price' => '$ 7.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Galleta-Mantequilla-768x768.png',
+                        'rating' => 4
+                    ),
+                    array(
+                        'name' => 'Pachicleta',
+                        'price' => '$ 11.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Pachicleta-768x768.png',
+                        'rating' => 4
+                    ),
+                    array(
+                        'name' => 'Ranchitas Nacho Extremo',
+                        'price' => '$ 4.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Ranchitas-Picantes-768x768.png',
+                        'rating' => 4
+                    ),
+                    array(
+                        'name' => 'Taqueritos',
+                        'price' => '$ 4.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Taueritos-Chile-Toreado-768x768.png',
+                        'rating' => 4
+                    ),
+                    array(
+                        'name' => 'Tipitin',
+                        'price' => '$ 9.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/TipiTin-Pintaboca-768x768.png',
+                        'rating' => 4
+                    ),
+                    array(
+                        'name' => 'Tortrix',
+                        'price' => '$ 3.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Tortix-Picante-768x768.png',
+                        'rating' => 4
+                    ),
+                    array(
+                        'name' => 'Zambos',
+                        'price' => '$ 3.99',
+                        'image' => get_template_directory_uri() . '/assets/images/products/Zambos-Picantes-768x768.png',
                         'rating' => 4
                     )
                 );

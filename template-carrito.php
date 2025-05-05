@@ -88,8 +88,8 @@ get_header(); ?>
                                     </div>
                                     
                                     <div class="text-right">
-                                        <p class="text-lg font-bold text-dark">L 240</p>
-                                        <p class="text-sm text-gray-500 line-through">L 300</p>
+                                        <p class="text-lg font-bold text-dark">$ 199.98</p>
+                                        <p class="text-sm text-gray-500 line-through">$ 239.98</p>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@ get_header(); ?>
                                     </div>
                                     
                                     <div class="text-right">
-                                        <p class="text-lg font-bold text-dark">L 65</p>
+                                        <p class="text-lg font-bold text-dark">$ 25.99</p>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@ get_header(); ?>
                                     </div>
                                     
                                     <div class="text-right">
-                                        <p class="text-lg font-bold text-dark">L 135</p>
+                                        <p class="text-lg font-bold text-dark">$ 49.97</p>
                                     </div>
                                 </div>
                             </div>
@@ -224,19 +224,19 @@ get_header(); ?>
                         <div class="space-y-4">
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Subtotal</span>
-                                <span class="font-medium">L 440</span>
+                                <span class="font-medium">$ 315.94</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Descuento</span>
-                                <span class="font-medium text-green-600">-L 60</span>
+                                <span class="font-medium text-green-600">-$ 40</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Envío</span>
-                                <span class="font-medium">L 50</span>
+                                <span class="font-medium">$ 15</span>
                             </div>
                             <div class="border-t border-gray-200 pt-4 flex justify-between">
                                 <span class="text-lg font-bold text-gray-800">Total</span>
-                                <span class="text-lg font-bold text-dark">L 430</span>
+                                <span class="text-lg font-bold text-dark">$ 290.94</span>
                             </div>
                         </div>
                         

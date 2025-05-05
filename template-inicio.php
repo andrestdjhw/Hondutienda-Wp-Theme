@@ -99,25 +99,25 @@ get_header(); ?>
                     $featured_products = array(
                         array(
                             'name' => 'Café Hondureño Premium',
-                            'price' => 'L 120',
-                            'old_price' => 'L 150',
+                            'price' => '$ 99.99',
+                            'old_price' => '$ 119.99',
                             'image' => get_template_directory_uri() . '/assets/images/products/Cafe_H_Premiun-768x768.webp',
                             'tag' => 'Oferta'
                         ),
                         array(
                             'name' => 'Jabón de Tocador',
-                            'price' => 'L 25',
+                            'price' => '$ 25.99',
                             'image' => get_template_directory_uri() . '/assets/images/products/Jabon_H_tocador-768x768.webp'
                         ),
                         array(
                             'name' => 'Galletas María',
-                            'price' => 'L 45',
+                            'price' => '$ 15.99',
                             'image' => get_template_directory_uri() . '/assets/images/products/Galletas_H_Maria-768x768.webp'
                         ),
                         array(
                             'name' => 'Refresco en Lata',
-                            'price' => 'L 30',
-                            'old_price' => 'L 35',
+                            'price' => '$ 30.99',
+                            'old_price' => '$ 35.99',
                             'image' => get_template_directory_uri() . '/assets/images/products/Refresco_Lata_12Unidades-768x533.jpg',
                             'tag' => 'Popular'
                         )
@@ -309,19 +309,19 @@ get_header(); ?>
                     $testimonials = array(
                         array(
                             'name' => 'María Fernández',
-                            'location' => 'Tegucigalpa',
+                            'location' => 'Houston, TX',
                             'comment' => 'Excelente servicio y productos frescos. Siempre llegan a tiempo y en perfecto estado.',
                             'rating' => 5
                         ),
                         array(
                             'name' => 'Carlos Martínez',
-                            'location' => 'San Pedro Sula',
+                            'location' => 'Miami, FL',
                             'comment' => 'Me encanta poder encontrar productos hondureños de calidad desde mi casa. ¡Muy recomendado!',
                             'rating' => 4
                         ),
                         array(
                             'name' => 'Ana López',
-                            'location' => 'La Ceiba',
+                            'location' => 'Los Angeles, CA',
                             'comment' => 'La mejor tienda en línea para hacer el mercado semanal. Rápido, económico y confiable.',
                             'rating' => 5
                         )

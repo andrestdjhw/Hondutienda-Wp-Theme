@@ -71,7 +71,7 @@ get_header(); ?>
                                     <p class="font-medium"><?php echo $item['name']; ?></p>
                                     <p class="text-sm text-gray-500">Cantidad: <?php echo $item['quantity']; ?></p>
                                 </div>
-                                <p class="font-semibold">L. <?php echo number_format($item['price'] * $item['quantity'], 2); ?></p>
+                                <p class="font-semibold">$ <?php echo number_format($item['price'] * $item['quantity'], 2); ?></p>
                             </div>
                             <?php endforeach; ?>
                         </div>
@@ -81,19 +81,19 @@ get_header(); ?>
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <p class="text-gray-600">Subtotal</p>
-                            <p class="font-medium">L. 276.00</p>
+                            <p class="font-medium">$ 276.00</p>
                         </div>
                         <div class="flex justify-between">
                             <p class="text-gray-600">Envío</p>
-                            <p class="font-medium">L. 50.00</p>
+                            <p class="font-medium">$ 50.00</p>
                         </div>
                         <div class="flex justify-between">
                             <p class="text-gray-600">Impuestos</p>
-                            <p class="font-medium">L. 41.40</p>
+                            <p class="font-medium">$ 41.40</p>
                         </div>
                         <div class="flex justify-between border-t border-gray-200 pt-3 mt-3">
                             <p class="font-bold text-lg">Total</p>
-                            <p class="font-bold text-lg text-primary">L. 367.40</p>
+                            <p class="font-bold text-lg text-primary">$ 367.40</p>
                         </div>
                     </div>
                 </div>
@@ -138,13 +138,13 @@ get_header(); ?>
                         <svg class="w-5 h-5 text-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
-                        <span>contacto@hondutienda.com</span>
+                        <span>info@hondutienda.com</span>
                     </div>
                     <div class="flex items-center">
                         <svg class="w-5 h-5 text-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                         </svg>
-                        <span>+504 9999-9999</span>
+                        <span>+1 823-596-3738</span>
                     </div>
                 </div>
             </div>
@@ -380,7 +380,7 @@ get_header(); ?>
                 </div>
                 
                 <!-- Security Badges -->
-                <div class="mt-8 bg-white rounded-lg shadow-custom p-8">
+                <!-- <div class="mt-8 bg-white rounded-lg shadow-custom p-8">
                     <div class="flex flex-col items-center">
                         <h3 class="text-lg font-semibold mb-4 text-center">Pago Seguro Garantizado</h3>
                         <div class="flex flex-wrap justify-center gap-4">
@@ -398,7 +398,7 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
