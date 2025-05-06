@@ -7,7 +7,7 @@ get_header(); ?>
 
 <div class="tienda-page">
   
-    <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-blue-800 to-blue-900">
+    <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-[#57D0E1] to-[#0090D9]">
         <div class="absolute inset-0 opacity-20">
             <div class="absolute top-0 -left-4 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
             <div class="absolute bottom-0 right-0 w-72 h-72 bg-yellow-600 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style="animation-delay: 1s;"></div>
@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fadeIn">
-                    Nuestra <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500">Tienda</span>
+                    Nuestra <span class="bg-clip-text text-transparent bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200">Tienda</span>
                 </h1>
                 <p class="text-xl text-white opacity-90 max-w-3xl mx-auto animate-fadeIn delay-100">
                     Descubre los mejores productos hondureños con la comodidad de comprar desde tu hogar.
@@ -219,7 +219,7 @@ get_header(); ?>
                             <?php endif; ?>
                         </div>
                         
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center">
+                        <button class="w-full bg-[#0090D9] text-white py-2 px-4 rounded-lg hover:bg-[#57D0E1] transition-colors duration-300 flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
@@ -233,13 +233,13 @@ get_header(); ?>
         <!-- Pagination -->
         <div class="flex justify-center mt-12 animate-fadeIn delay-400">
             <nav class="flex items-center space-x-2">
-                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors duration-300">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-[#0090D9] hover:text-white transition-colors duration-300">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </button>
                 
-                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-medium">1</button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-[#0090D9] text-white font-medium">1</button>
                 <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors duration-300 font-medium">2</button>
                 <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors duration-300 font-medium">3</button>
                 
@@ -247,7 +247,7 @@ get_header(); ?>
                 
                 <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors duration-300 font-medium">8</button>
                 
-                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors duration-300">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-[#0090D9] hover:text-white transition-colors duration-300">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>

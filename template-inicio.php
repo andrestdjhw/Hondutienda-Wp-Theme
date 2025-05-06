@@ -8,7 +8,7 @@ get_header(); ?>
 
 <div class="home-page">
     <!-- Hero Section with Product Showcase -->
-    <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-blue-800 to-blue-900">
+    <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-[#57D0E1] to-[#0090D9]">
         <!-- Animated Background Elements -->
         <div class="absolute inset-0 opacity-20">
             <div class="absolute top-0 -left-4 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -21,7 +21,7 @@ get_header(); ?>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-center md:text-left">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fadeIn">
-                        Bienvenido a <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500">Hondutienda</span>
+                        Bienvenido a <span class="bg-clip-text text-transparent bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200">Hondutienda</span>
                     </h1>
                     <p class="text-xl text-white opacity-90 mb-8 animate-fadeIn delay-100">
                         Tu minimarket en línea con los mejores productos hondureños a un clic de distancia.
@@ -61,14 +61,14 @@ get_header(); ?>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <?php
                 $categories = array(
-                    array('name' => 'Alimentos', 'icon' => '🍔', 'color' => 'bg-red-100', 'hover' => 'bg-red-200'),
-                    array('name' => 'Bebidas', 'icon' => '🥤', 'color' => 'bg-blue-100', 'hover' => 'bg-blue-200'),
-                    array('name' => 'Limpieza', 'icon' => '🧼', 'color' => 'bg-green-100', 'hover' => 'bg-green-200'),
-                    array('name' => 'Cuidado Personal', 'icon' => '🧴', 'color' => 'bg-purple-100', 'hover' => 'bg-purple-200'),
-                    array('name' => 'Snacks', 'icon' => '🍫', 'color' => 'bg-yellow-100', 'hover' => 'bg-yellow-200'),
-                    array('name' => 'Hogar', 'icon' => '🏠', 'color' => 'bg-indigo-100', 'hover' => 'bg-indigo-200'),
-                    array('name' => 'Electrónica', 'icon' => '📱', 'color' => 'bg-gray-100', 'hover' => 'bg-gray-200'),
-                    array('name' => 'Otros', 'icon' => '📦', 'color' => 'bg-pink-100', 'hover' => 'bg-pink-200')
+                    array('name' => 'Alimentos', 'icon' => '🍔', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
+                    array('name' => 'Bebidas', 'icon' => '🥤', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
+                    array('name' => 'Limpieza', 'icon' => '🧼', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
+                    array('name' => 'Cuidado Personal', 'icon' => '🧴', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
+                    array('name' => 'Golosinas', 'icon' => '🍫', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
+                    array('name' => 'Articulos Hogar', 'icon' => '🏠', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
+                    array('name' => 'Electrónica', 'icon' => '📱', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
+                    array('name' => 'Otros', 'icon' => '📦', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]')
                 );
                 
                 foreach($categories as $index => $category) : ?>
@@ -79,7 +79,7 @@ get_header(); ?>
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full <?php echo $category['color']; ?> hover:<?php echo $category['hover']; ?> flex items-center justify-center text-3xl transition-colors duration-300">
                         <?php echo $category['icon']; ?>
                     </div>
-                    <h3 class="font-bold text-gray-800"><?php echo $category['name']; ?></h3>
+                    <h3 class="font-bold text-gray-100"><?php echo $category['name']; ?></h3>
                 </a>
             <?php endforeach; ?>
         </div>
@@ -147,7 +147,7 @@ get_header(); ?>
                                     <span class="ml-2 text-sm text-gray-500 line-through"><?php echo $product['old_price']; ?></span>
                                 <?php endif; ?>
                             </div>
-                            <button class="mt-4 w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                            <button class="mt-4 w-full bg-[#57D0E1] text-white py-2 px-4 rounded-lg hover:bg-[#0090D9] transition-colors duration-300">
                                 Añadir al Carrito
                             </button>
                         </div>
@@ -156,7 +156,7 @@ get_header(); ?>
             </div>
             
             <div class="text-center mt-12 animate-fadeIn delay-400">
-                <a href="/tienda" class="inline-block border-2 border-primary text-primary font-bold py-3 px-8 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                <a href="/tienda" class="inline-block border-2 border-[#0090D9] text-[#0090D9] font-bold py-3 px-8 rounded-full hover:bg-[#0090D9] hover:text-white transition-colors duration-300">
                     Ver Todos los Productos
                 </a>
             </div>
@@ -167,7 +167,7 @@ get_header(); ?>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-800 mb-4 animate-fadeIn">
-                Explora <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">Nuestras Categorías</span>
+                Explora <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#0090D9] to-[#57D0E1]">Nuestras Categorías</span>
             </h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto animate-fadeIn delay-100">
                 Descubre los mejores productos organizados para tu conveniencia
@@ -176,7 +176,7 @@ get_header(); ?>
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <!-- Categoría 1 -->
-            <a href="/categoria/alimentos" class="group relative bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn p-6 flex flex-col items-center justify-center text-center border-2 border-yellow-100 hover:border-yellow-300">
+            <a href="/categoria/alimentos" class="group relative bg-gradient-to-br from-yellow-50 to-[#FCC404] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn p-6 flex flex-col items-center justify-center text-center border-2 border-yellow-100 hover:border-yellow-300">
                 <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-yellow-200 transition-colors duration-300">
                     <span class="text-3xl">🍎</span>
                 </div>
@@ -186,7 +186,7 @@ get_header(); ?>
             </a>
             
             <!-- Categoría 2 -->
-            <a href="/categoria/bebidas" class="group relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-100 p-6 flex flex-col items-center justify-center text-center border-2 border-blue-100 hover:border-blue-300">
+            <a href="/categoria/bebidas" class="group relative bg-gradient-to-br from-blue-50 to-[#57D0E1] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-100 p-6 flex flex-col items-center justify-center text-center border-2 border-blue-100 hover:border-blue-300">
                 <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors duration-300">
                     <span class="text-3xl">🥤</span>
                 </div>
@@ -196,7 +196,7 @@ get_header(); ?>
             </a>
             
             <!-- Categoría 3 -->
-            <a href="/categoria/limpieza" class="group relative bg-gradient-to-br from-green-50 to-green-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-200 p-6 flex flex-col items-center justify-center text-center border-2 border-green-100 hover:border-green-300">
+            <a href="/categoria/limpieza" class="group relative bg-gradient-to-br from-green-50 to-[#3ABF3A] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-200 p-6 flex flex-col items-center justify-center text-center border-2 border-green-100 hover:border-green-300">
                 <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors duration-300">
                     <span class="text-3xl">🧼</span>
                 </div>
@@ -206,7 +206,7 @@ get_header(); ?>
             </a>
             
             <!-- Categoría 4 -->
-            <a href="/categoria/cuidado-personal" class="group relative bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-300 p-6 flex flex-col items-center justify-center text-center border-2 border-purple-100 hover:border-purple-300">
+            <a href="/categoria/cuidado-personal" class="group relative bg-gradient-to-br from-purple-50 to-[#EA2626] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-300 p-6 flex flex-col items-center justify-center text-center border-2 border-purple-100 hover:border-purple-300">
                 <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors duration-300">
                     <span class="text-3xl">🧴</span>
                 </div>
@@ -217,7 +217,7 @@ get_header(); ?>
         </div>
         
         <div class="text-center mt-12 animate-fadeIn delay-400">
-            <a href="/categorias" class="inline-flex items-center border-2 border-primary text-primary font-bold py-3 px-8 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+            <a href="/categorias" class="inline-flex items-center border-2 border-[#0090D9] text-[#0090D9] font-bold py-3 px-8 rounded-full hover:bg-[#0090D9] hover:text-white transition-colors duration-300">
                 Ver todas las categorías
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -353,7 +353,7 @@ get_header(); ?>
     </section>
 
     <!-- Newsletter -->
-    <section class="py-16 bg-primary text-white">
+    <section class="py-16 bg-[#0090D9] text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-4 animate-fadeIn">¡No te pierdas nuestras ofertas!</h2>
             <p class="text-xl opacity-90 mb-8 animate-fadeIn delay-100">Suscríbete a nuestro newsletter y recibe descuentos exclusivos</p>

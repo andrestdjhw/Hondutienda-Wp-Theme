@@ -10,7 +10,7 @@ get_header(); ?>
     <!-- Hero Section with Gradient Background -->
     <section class="relative py-24 overflow-hidden">
         <!-- Gradient Background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary via-blue-800 to-blue-900"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary via-[#57D0E1] to-[#0090D9]"></div>
         
         <!-- Animated Background Elements -->
         <div class="absolute inset-0 opacity-20">
@@ -25,7 +25,7 @@ get_header(); ?>
         <!-- Content -->
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-200 to-white animate-gradient">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white animate-gradient">
                     Finalizar Compra
                 </h1>
                 <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed opacity-90">

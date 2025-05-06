@@ -10,7 +10,7 @@ get_header(); ?>
     <!-- Hero Section with Gradient Background -->
     <section class="relative py-24 overflow-hidden">
         <!-- Gradient Background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary via-blue-800 to-blue-900"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary via-[#57D0E1] to-[#0090D9]"></div>
         
         <!-- Animated Background Elements -->
         <div class="absolute inset-0 opacity-20">

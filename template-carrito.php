@@ -7,7 +7,7 @@ get_header(); ?>
 
 <div class="cart-page">
 
-    <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-blue-800 to-blue-900">
+    <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-[#57D0E1] to-[#0090D9]">
         <div class="absolute inset-0 opacity-20">
             <div class="absolute top-0 -left-4 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
             <div class="absolute bottom-0 right-0 w-72 h-72 bg-yellow-600 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style="animation-delay: 1s;"></div>
@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fadeIn">
-                    Tu <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500">Carrito</span>
+                    Tu <span class="bg-clip-text text-transparent bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200">Carrito</span>
                 </h1>
                 <p class="text-xl text-white opacity-90 max-w-3xl mx-auto animate-fadeIn delay-100">
                     Revisa y gestiona los productos que has seleccionado
@@ -36,7 +36,7 @@ get_header(); ?>
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <?php if(true) : // Cambiar a true cuando hay productos ?>
+        <?php if(false) : // Cambiar a true cuando hay productos ?>
         <!-- Cart with Items -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn">
             <!-- Cart Items -->
@@ -270,7 +270,7 @@ get_header(); ?>
             
             <a 
                 href="/tienda" 
-                class="inline-block bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors duration-300"
+                class="inline-block bg-[#0090D9] text-white font-bold py-3 px-8 rounded-full hover:bg-[#57D0E1] transition-colors duration-300"
             >
                 Ir a la Tienda
             </a>
