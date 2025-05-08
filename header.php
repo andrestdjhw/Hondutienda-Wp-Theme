@@ -23,8 +23,8 @@
                 extend: {
                     colors: {
                         primary: '#1E40AF', // Deep blue for a modern feel
-                        secondary: '#FBBF24', // Vibrant yellow for highlights
-                        accent: '#FBBF24', // Golden yellow to match secondary
+                        secondary: '#FCC404', // Vibrant yellow for highlights
+                        accent: '#FCC404', // Golden yellow to match secondary
                         dark: '#111827', // Near-black for footer bg
                         light: '#F9FAFB' // Light gray for backgrounds
                     },
@@ -69,25 +69,25 @@
 
  <!-- Desktop Navigation -->
 <div class="hidden lg:flex items-center space-x-10">
-    <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_front_page() ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+    <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center space-x-2 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_front_page() ? 'border-b-2 border-[#EA2626]' : 'hover:border-b-2 hover:border-[#EA2626]'; ?>">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
         </svg>
         <span>Inicio</span>
     </a>
-    <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+    <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-2 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'border-b-2 border-[#EA2626]' : 'hover:border-b-2 hover:border-[#EA2626]'; ?>">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
         </svg>
         <span>Tienda</span>
     </a>
-    <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('nosotros') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+    <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center space-x-2 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_page('nosotros') ? 'border-b-2 border-[#EA2626]' : 'hover:border-b-2 hover:border-[#EA2626]'; ?>">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 22" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
         </svg>
         <span>Nosotros</span>
     </a>
-    <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors relative <?php echo is_page('carrito') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+    <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="flex items-center space-x-2 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors relative <?php echo is_page('carrito') ? 'border-b-2 border-[#EA2626]' : 'hover:border-b-2 hover:border-[#EA2626]'; ?>">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
         </svg>
@@ -95,11 +95,11 @@
         <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
             <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
             <?php if ($cart_count > 0) : ?>
-                <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
+                <span class="absolute -top-2 -right-2 bg-[#EA2626] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
             <?php endif; ?>
         <?php endif; ?>
     </a>
-    <a href="<?php echo esc_url(home_url('/pagos')); ?>" class="flex items-center space-x-2 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('pagos') ? 'border-b-2 border-secondary' : 'hover:border-b-2 hover:border-secondary'; ?>">
+    <a href="<?php echo esc_url(home_url('/pagos')); ?>" class="flex items-center space-x-2 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_page('pagos') ? 'border-b-2 border-[#EA2626]' : 'hover:border-b-2 hover:border-[#EA2626]'; ?>">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
         </svg>
@@ -109,28 +109,28 @@
                     <!-- Right Side: Search, Cart, and Mobile Menu Toggle -->
                     <div class="flex items-center space-x-4">
                         <!-- Search Icon -->
-                        <button id="search-toggle" class="p-2 text-dark hover:text-secondary transition-colors" aria-label="Toggle search">
+                        <button id="search-toggle" class="p-2 text-dark hover:text-[#EA2626] transition-colors" aria-label="Toggle search">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0-5.65a7 7 0 10-14 0 7 7 0 0014 0z"></path>
                             </svg>
                         </button>
 
                         <!-- Cart Icon -->
-                        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="p-2 text-dark hover:text-secondary transition-colors relative" aria-label="Cart">
+                        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="p-2 text-dark hover:text-[#EA2626] transition-colors relative" aria-label="Cart">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                             <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
                                 <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
                                 <?php if ($cart_count > 0) : ?>
-                                    <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
+                                    <span class="absolute -top-2 -right-2 bg-[#EA2626] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
                                 <?php endif; ?>
                             <?php endif; ?>
                         </a>
 
                         <!-- Mobile Menu Toggle -->
                         <div class="lg:hidden">
-                            <button id="mobile-menu-toggle" class="p-2 text-dark hover:text-secondary transition-colors" aria-expanded="false" aria-controls="mobile-menu">
+                            <button id="mobile-menu-toggle" class="p-2 text-dark hover:text-[#EA2626] transition-colors" aria-expanded="false" aria-controls="mobile-menu">
                                 <svg id="menu-open-icon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                                 </svg>
@@ -147,13 +147,13 @@
                     <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex items-center max-w-2xl mx-auto">
                         <div class="relative flex-grow">
                             <input type="search" name="s" placeholder="¿Qué estás buscando hoy?" 
-                                class="w-full p-3 pl-12 rounded-l-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300"
+                                class="w-full p-3 pl-12 rounded-l-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#EA2626] focus:border-transparent transition-all duration-300"
                                 autocomplete="off">
                             <svg class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0-5.65a7 7 0 10-14 0 7 7 0 0014 0z"></path>
                             </svg>
                         </div>
-                        <button type="submit" class="bg-secondary py-3 px-6 rounded-r-full text-dark font-bold hover:bg-secondary hover:bg-opacity-80 hover:shadow-md transform transition-all duration-300 hover:-translate-y-0.5">
+                        <button type="submit" class="bg-[#EA2626] py-3 px-6 rounded-r-full text-dark font-bold hover:bg-[#EA2626] hover:bg-opacity-80 hover:shadow-md transform transition-all duration-300 hover:-translate-y-0.5">
                             Buscar
                         </button>
                     </form>
@@ -162,25 +162,25 @@
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-custom">
     <div class="px-4 py-6 space-y-4">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_front_page() ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center space-x-3 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_front_page() ? 'bg-[#EA2626] text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
             </svg>
             <span>Inicio</span>
         </a>
-        <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+        <a href="<?php echo esc_url(home_url('/tienda')); ?>" class="flex items-center space-x-3 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_page('tienda') ? 'bg-[#EA2626] text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
             </svg>
             <span>Tienda</span>
         </a>
-        <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('nosotros') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+        <a href="<?php echo esc_url(home_url('/nosotros')); ?>" class="flex items-center space-x-3 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_page('nosotros') ? 'bg-[#EA2626] text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
             </svg>
             <span>Nosotros</span>
         </a>
-        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors relative <?php echo is_page('carrito') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+        <a href="<?php echo esc_url(home_url('/carrito')); ?>" class="flex items-center space-x-3 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors relative <?php echo is_page('carrito') ? 'bg-[#EA2626] text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
@@ -188,11 +188,11 @@
             <?php if (function_exists('WC') && !is_null(WC()->cart)) : ?>
                 <?php $cart_count = WC()->cart->get_cart_contents_count(); ?>
                 <?php if ($cart_count > 0) : ?>
-                    <span class="absolute top-1 right-3 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
+                    <span class="absolute top-1 right-3 bg-[#EA2626] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><?php echo esc_html($cart_count); ?></span>
                 <?php endif; ?>
             <?php endif; ?>
         </a>
-        <a href="<?php echo esc_url(home_url('/pagos')); ?>" class="flex items-center space-x-3 text-dark hover:text-secondary font-medium py-2 transition-colors <?php echo is_page('pagos') ? 'bg-accent text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
+        <a href="<?php echo esc_url(home_url('/pagos')); ?>" class="flex items-center space-x-3 text-dark hover:text-[#EA2626] font-medium py-2 transition-colors <?php echo is_page('pagos') ? 'bg-[#EA2626] text-white' : 'hover:bg-gray-100'; ?> rounded-md px-3">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
             </svg>
