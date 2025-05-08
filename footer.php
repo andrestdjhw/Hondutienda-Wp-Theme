@@ -13,7 +13,7 @@
         <p class="text-sm text-gray-400 max-w-md mb-4">
         Nuestra tienda nacio en el verano del 2020. Siempre hemos querido que lo nuestro esta a tu alcance!.
         </p>
-        <p class="text-xs text-yellow-400 font-semibold italic">¡Hondutienda: Donde la confianza se encuentra con la innovación!</p>
+        <p class="text-xs text-white-400 font-bold italic"><strong>¡Hondutienda: Donde la confianza se encuentra con la innovación!</strong></p>
       </div>
 
       <!-- Navigation Links -->
