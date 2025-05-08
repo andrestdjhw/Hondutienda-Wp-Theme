@@ -61,14 +61,14 @@ get_header(); ?>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <?php
                 $categories = array(
-                    array('name' => 'Alimentos', 'icon' => '🍔', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
-                    array('name' => 'Bebidas', 'icon' => '🥤', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
-                    array('name' => 'Limpieza', 'icon' => '🧼', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
-                    array('name' => 'Cuidado Personal', 'icon' => '🧴', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
-                    array('name' => 'Golosinas', 'icon' => '🍫', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
-                    array('name' => 'Articulos Hogar', 'icon' => '🏠', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
-                    array('name' => 'Electrónica', 'icon' => '📱', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]'),
-                    array('name' => 'Otros', 'icon' => '📦', 'color' => 'bg-[#0090D9]', 'hover' => 'bg-[#57D0E1]')
+                    array('name' => 'Comidas', 'icon' => '🌯', 'color' => 'bg-gradient-to-br from-blue-50 to-[#57D0E1] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-100 p-6 flex flex-col items-center justify-center text-center border-2 border-blue-100 hover:border-blue-300', 'hover' => 'bg-gradient-to-br from-blue-50 to-[#57D0E1] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-100 p-6 flex flex-col items-center justify-center text-center border-2 border-blue-100 hover:border-blue-300'),
+                    array('name' => 'Refrescos', 'icon' => '🥤', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
+                    array('name' => 'Granos Basicos', 'icon' => '🫘', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
+                    array('name' => 'Condimentos', 'icon' => '🧄', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
+                    array('name' => 'Chuncherias', 'icon' => '🍪', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
+                    array('name' => 'Confites', 'icon' => '🍬', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
+                    array('name' => 'Panaderia', 'icon' => '🍞', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
+                    array('name' => 'Tipicos', 'icon' => '🇭🇳', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]')
                 );
                 
                 foreach($categories as $index => $category) : ?>
@@ -353,7 +353,7 @@ get_header(); ?>
     </section>
 
     <!-- Newsletter -->
-    <section class="py-16 bg-[#0090D9] text-white">
+    <section class="py-16 bg-gradient-to-r from-[#EA2626] to-red-500 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-4 animate-fadeIn">¡No te pierdas nuestras ofertas!</h2>
             <p class="text-xl opacity-90 mb-8 animate-fadeIn delay-100">Suscríbete a nuestro newsletter y recibe descuentos exclusivos</p>
@@ -368,7 +368,7 @@ get_header(); ?>
                     >
                     <button 
                         type="submit" 
-                        class="bg-secondary text-dark font-bold py-3 px-6 rounded-full hover:bg-yellow-400 transition-colors duration-300"
+                        class="bg-[#57D0E1] text-white font-bold py-3 px-6 rounded-full hover:bg-[#0090D9] transition-colors duration-300"
                     >
                         Suscribirse
                     </button>
