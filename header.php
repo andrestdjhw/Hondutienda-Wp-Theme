@@ -153,7 +153,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0-5.65a7 7 0 10-14 0 7 7 0 0014 0z"></path>
                             </svg>
                         </div>
-                        <button type="submit" class="bg-[#EA2626] py-3 px-6 rounded-r-full text-dark font-bold hover:bg-[#EA2626] hover:bg-opacity-80 hover:shadow-md transform transition-all duration-300 hover:-translate-y-0.5">
+                        <button type="submit" class="bg-[#EA2626] py-3 px-6 rounded-r-full text-white font-bold hover:bg-[#EA2626] hover:bg-opacity-80 hover:shadow-md transform transition-all duration-300 hover:-translate-y-0.5">
                             Buscar
                         </button>
                     </form>

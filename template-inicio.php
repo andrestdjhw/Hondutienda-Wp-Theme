@@ -61,7 +61,7 @@ get_header(); ?>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <?php
                 $categories = array(
-                    array('name' => 'Comidas', 'icon' => '🌯', 'color' => 'bg-gradient-to-br from-blue-50 to-[#57D0E1] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-100 p-6 flex flex-col items-center justify-center text-center border-2 border-blue-100 hover:border-blue-300', 'hover' => 'bg-gradient-to-br from-blue-50 to-[#57D0E1] rounded-2xl h-48 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fadeIn delay-100 p-6 flex flex-col items-center justify-center text-center border-2 border-blue-100 hover:border-blue-300'),
+                    array('name' => 'Comidas', 'icon' => '🌯', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
                     array('name' => 'Refrescos', 'icon' => '🥤', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
                     array('name' => 'Granos Basicos', 'icon' => '🫘', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
                     array('name' => 'Condimentos', 'icon' => '🧄', 'color' => 'bg-[#57D0E1]', 'hover' => 'bg-[#0090D9]'),
