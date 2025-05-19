@@ -279,15 +279,15 @@ get_header(); ?>
             <!-- Left Column Items -->
             <div class="lg:col-span-2">
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                    <?php woocommerce_before_cart_contents(); ?>
-                    <?php woocommerce_cart_totals(); ?>
-                    <?php woocommerce_after_cart_contents(); ?>
+                    <?php do_action('woocommerce_before_cart_contents'); ?>
+                    <?php do_action('woocommerce_cart_totals'); ?>
+                    <?php do_action('woocommerce_after_cart_contents'); ?>
                 </div>
             </div>
 
             <!-- Right Column (Keep your summary design) -->
             <div class="animate-fadeIn delay-200">
-                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="bg-white rounded-xl shadow-custom overflow-hidden">
                     <?php woocommerce_cart_totals(); ?>
                 </div>
             </div>
