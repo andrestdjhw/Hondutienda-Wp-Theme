@@ -36,20 +36,40 @@ get_header(); ?>
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <?php if(false) : // Cambiar a true cuando hay productos ?>
-        <!-- Cart with Items -->
+        <?php if(WC()->cart->is_empty()) : // Cambiar a true cuando hay productos ?>
+         <!-- Empty Cart -->
+        <div class="max-w-2xl mx-auto text-center py-16 animate-fadeIn">
+            <div class="w-40 h-40 mx-auto mb-8 text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Tu carrito está vacío</h2>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">
+                Parece que no has agregado ningún producto a tu carrito todavía. Explora nuestra tienda y encuentra productos increíbles.
+            </p>
+            
+            <a 
+                href="/tienda" 
+                class="inline-block bg-[#0090D9] text-white font-bold py-3 px-8 rounded-full hover:bg-[#57D0E1] transition-colors duration-300"
+            >
+                Ir a la Tienda
+            </a>
+        </div>       
+         <!-- Cart with Items 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn">
-            <!-- Cart Items -->
+             Cart Items 
             <div class="lg:col-span-2">
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                    <!-- Cart Header -->
+                     Cart Header 
                     <div class="border-b border-gray-200 p-6 bg-gray-50">
                         <h2 class="text-xl font-bold text-gray-800">Tus Productos (3)</h2>
                     </div>
                     
-                    <!-- Cart Items List -->
+                     Cart Items List 
                     <div class="divide-y divide-gray-200">
-                        <!-- Product 1 -->
+                         Product 1 
                         <div class="p-6 flex flex-col sm:flex-row gap-6 hover:bg-gray-50 transition-colors duration-200">
                             <div class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
                                 <img 
@@ -95,7 +115,7 @@ get_header(); ?>
                             </div>
                         </div>
                         
-                        <!-- Product 2 -->
+                         Product 2 
                         <div class="p-6 flex flex-col sm:flex-row gap-6 hover:bg-gray-50 transition-colors duration-200">
                             <div class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
                                 <img 
@@ -140,7 +160,7 @@ get_header(); ?>
                             </div>
                         </div>
                         
-                        <!-- Product 3 -->
+                         Product 3 
                         <div class="p-6 flex flex-col sm:flex-row gap-6 hover:bg-gray-50 transition-colors duration-200">
                             <div class="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
                                 <img 
@@ -186,7 +206,7 @@ get_header(); ?>
                         </div>
                     </div>
                     
-                    <!-- Cart Footer -->
+                     Cart Footer 
                     <div class="p-6 bg-gray-50 border-t border-gray-200">
                         <button class="text-primary font-medium hover:text-blue-700 transition-colors duration-200 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -197,7 +217,7 @@ get_header(); ?>
                     </div>
                 </div>
                 
-                <!-- Coupon Code -->
+                 Coupon Code 
                 <div class="mt-6 bg-white rounded-xl shadow-sm p-6 animate-fadeIn delay-100">
                     <h3 class="text-lg font-bold text-gray-800 mb-4">¿Tienes un código de descuento?</h3>
                     <div class="flex">
@@ -213,7 +233,7 @@ get_header(); ?>
                 </div>
             </div>
             
-            <!-- Order Summary -->
+             Order Summary 
             <div class="animate-fadeIn delay-200">
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden sticky top-6">
                     <div class="border-b border-gray-200 p-6 bg-gray-50">
@@ -252,28 +272,25 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         
         <?php else : ?>
-        <!-- Empty Cart -->
-        <div class="max-w-2xl mx-auto text-center py-16 animate-fadeIn">
-            <div class="w-40 h-40 mx-auto mb-8 text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column Items -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <?php woocommerce_before_cart_contents(); ?>
+                    <?php woocommerce_cart_totals(); ?>
+                    <?php woocommerce_after_cart_contents(); ?>
+                </div>
             </div>
-            
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Tu carrito está vacío</h2>
-            <p class="text-gray-600 mb-8 max-w-md mx-auto">
-                Parece que no has agregado ningún producto a tu carrito todavía. Explora nuestra tienda y encuentra productos increíbles.
-            </p>
-            
-            <a 
-                href="/tienda" 
-                class="inline-block bg-[#0090D9] text-white font-bold py-3 px-8 rounded-full hover:bg-[#57D0E1] transition-colors duration-300"
-            >
-                Ir a la Tienda
-            </a>
+
+            <!-- Right Column (Keep your summary design) -->
+            <div class="animate-fadeIn delay-200">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <?php woocommerce_cart_totals(); ?>
+                </div>
+            </div>
         </div>
         <?php endif; ?>
     </div>

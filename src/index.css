@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+/* WooCommerce overrides */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+    @apply border p-4 rounded-lg shadow-sm;
+}
+
+.woocommerce .price {
+    @apply text-xl font-bold text-primary;
+}
+
+.woocommerce .button {
+    @apply bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors;
+}
+
+

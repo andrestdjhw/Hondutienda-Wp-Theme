@@ -83,7 +83,7 @@ get_header(); ?>
         <!-- Product Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <?php
-                $products = array(
+                /* $products = array(
                     array(
                         'name' => 'ALKA',
                         'price' => '$ 7',
@@ -178,9 +178,9 @@ get_header(); ?>
                         'image' => get_template_directory_uri() . '/assets/images/products/Zambos-Picantes-768x768.png',
                         'rating' => 4
                     )
-                );
+                ); */
                 
-                foreach($products as $index => $product) : ?>
+                /* foreach($products as $index => $product) : ?>
                 <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-2 animate-fadeIn delay-<?php echo ($index % 4) * 100; ?>">
                     <?php if(isset($product['tag'])) : ?>
                         <div class="absolute top-4 right-4 bg-secondary text-dark text-xs font-bold px-3 py-1 rounded-full z-10">
@@ -227,7 +227,20 @@ get_header(); ?>
                         </button>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach; */ 
+            
+            if (have_posts()) :
+                while (have_posts()) : the_post();
+                    // Preserve your card container styles
+                    echo '<div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-2">';
+        
+                    // WooCommerce content
+                    wc_get_template_part('content', 'product');
+        
+                    echo '</div>';
+                endwhile;
+            endif;
+            ?>
         </div>
 
         <!-- Pagination -->

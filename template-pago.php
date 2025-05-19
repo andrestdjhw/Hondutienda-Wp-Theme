@@ -48,17 +48,34 @@ get_header(); ?>
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <!-- Payment Information -->
+            <!-- Left Column (Order Review) -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-lg shadow-custom p-8">
+                 <?php woocommerce_order_review(); ?>
+                </div>                
+            </div>
+
+            <!-- Right Column (Your styled payment form) -->
+            <div class="md:col-span-2">
+                 
+                <div class="bg-white rounded-lg shadow-custom p-8">
+                    <?php
+                        do_action('woocommerce_before_checkout_form');
+                        woocommerce_checkout_form(WC()->checkout()); 
+                    ?>
+                </div>
+            </div>
+             <!-- Payment Information 
             <div class="md:col-span-1">
                 <div class="bg-white rounded-lg shadow-custom p-8">
                     <h2 class="text-2xl font-bold mb-6">Resumen de Compra</h2>
                     
-                    <!-- Order Summary -->
+                     Order Summary 
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold mb-3">Tu Pedido</h3>
                         <div class="border-t border-b border-gray-200 py-4 space-y-4">
                             <?php
-                            // This would be replaced with actual order items
+                             //This would be replaced with actual order items
                             $sample_items = [
                                 ['name' => 'Producto de ejemplo 1', 'price' => 125.00, 'quantity' => 1],
                                 ['name' => 'Producto de ejemplo 2', 'price' => 75.50, 'quantity' => 2],
@@ -77,7 +94,7 @@ get_header(); ?>
                         </div>
                     </div>
                     
-                    <!-- Order Totals -->
+                     Order Totals 
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <p class="text-gray-600">Subtotal</p>
@@ -98,7 +115,7 @@ get_header(); ?>
                     </div>
                 </div>
                 
-                <!-- Shipping Info -->
+                 Shipping Info 
                 <div class="bg-white rounded-lg shadow-custom p-8 mt-8">
                     <h2 class="text-2xl font-bold mb-6">Dirección de Envío</h2>
                     <div class="flex items-start mb-6">
@@ -116,7 +133,7 @@ get_header(); ?>
                         </div>
                     </div>
                     
-                    <!-- Estimated Delivery -->
+                     Estimated Delivery 
                     <div class="flex items-start">
                         <div class="flex-shrink-0 bg-secondary rounded-full p-3">
                             <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -130,7 +147,7 @@ get_header(); ?>
                     </div>
                 </div>
                 
-                <!-- Need Help? -->
+                 Need Help? 
                 <div class="bg-white rounded-lg shadow-custom p-8 mt-8">
                     <h2 class="text-2xl font-bold mb-6">¿Necesitas ayuda?</h2>
                     <p class="text-gray-600 mb-4">Si tienes alguna pregunta sobre tu pedido, contáctanos:</p>
@@ -149,25 +166,25 @@ get_header(); ?>
                 </div>
             </div>
             
-            <!-- Payment Form -->
+             Payment Form 
             <div class="md:col-span-2">
                 <div class="bg-white rounded-lg shadow-custom p-8">
                     <h2 class="text-2xl font-bold mb-6">Información de Pago</h2>
                     <form id="payment-form" class="space-y-6">
                         <?php wp_nonce_field('payment_form_nonce', 'payment_nonce'); ?>
                         
-                        <!-- Personal Information Section -->
+                         Personal Information Section 
                         <div>
                             <h3 class="text-xl font-semibold mb-4">Información Personal</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- First Name -->
+                                 First Name 
                                 <div>
                                     <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
                                     <input type="text" id="first_name" name="first_name" required
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
                                 </div>
                                 
-                                <!-- Last Name -->
+                                 Last Name 
                                 <div>
                                     <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Apellido</label>
                                     <input type="text" id="last_name" name="last_name" required
@@ -175,14 +192,14 @@ get_header(); ?>
                                 </div>
                             </div>
                             
-                            <!-- Email -->
+                             Email 
                             <div class="mt-6">
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
                                 <input type="email" id="email" name="email" required
                                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
                             </div>
                             
-                            <!-- Phone -->
+                             Phone 
                             <div class="mt-6">
                                 <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
                                 <input type="tel" id="phone" name="phone" required
@@ -190,17 +207,17 @@ get_header(); ?>
                             </div>
                         </div>
                         
-                        <!-- Shipping Address Section -->
+                         Shipping Address Section 
                         <div class="pt-6 border-t border-gray-200">
                             <h3 class="text-xl font-semibold mb-4">Dirección de Envío</h3>
-                            <!-- Street Address -->
+                             Street Address 
                             <div>
                                 <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Dirección</label>
                                 <input type="text" id="address" name="address" required
                                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
                             </div>
                             
-                            <!-- Apartment/Suite -->
+                             Apartment/Suite 
                             <div class="mt-6">
                                 <label for="address2" class="block text-sm font-medium text-gray-700 mb-2">Apartamento, suite, etc. (opcional)</label>
                                 <input type="text" id="address2" name="address2"
@@ -208,14 +225,14 @@ get_header(); ?>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                                <!-- City -->
+                                 City 
                                 <div>
                                     <label for="city" class="block text-sm font-medium text-gray-700 mb-2">Ciudad</label>
                                     <input type="text" id="city" name="city" required
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
                                 </div>
                                 
-                                <!-- State -->
+                                 State 
                                 <div>
                                     <label for="state" class="block text-sm font-medium text-gray-700 mb-2">Departamento</label>
                                     <select id="state" name="state" required
@@ -226,11 +243,11 @@ get_header(); ?>
                                         <option value="AT">Atlántida</option>
                                         <option value="CP">Copán</option>
                                         <option value="CM">Comayagua</option>
-                                        <!-- Add more departments as needed -->
+                                         Add more departments as needed 
                                     </select>
                                 </div>
                                 
-                                <!-- Zip Code -->
+                                 Zip Code 
                                 <div>
                                     <label for="zip" class="block text-sm font-medium text-gray-700 mb-2">Código Postal</label>
                                     <input type="text" id="zip" name="zip" required
@@ -239,11 +256,11 @@ get_header(); ?>
                             </div>
                         </div>
                         
-                        <!-- Payment Method Section -->
+                         Payment Method Section 
                         <div class="pt-6 border-t border-gray-200">
                             <h3 class="text-xl font-semibold mb-4">Método de Pago</h3>
                             
-                            <!-- Payment Type Selection -->
+                             Payment Type Selection 
                             <div class="mb-6">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Selecciona un método de pago</label>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -271,9 +288,9 @@ get_header(); ?>
                                 </div>
                             </div>
                             
-                            <!-- Credit Card Form -->
+                             Credit Card Form 
                             <div id="credit-card-form">
-                                <!-- Card Number -->
+                                 Card Number 
                                 <div class="mb-6">
                                     <label for="card_number" class="block text-sm font-medium text-gray-700 mb-2">Número de Tarjeta</label>
                                     <div class="relative">
@@ -293,21 +310,21 @@ get_header(); ?>
                                 </div>
                                 
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <!-- Cardholder Name -->
+                                     Cardholder Name 
                                     <div class="md:col-span-1">
                                         <label for="card_name" class="block text-sm font-medium text-gray-700 mb-2">Nombre en la Tarjeta</label>
                                         <input type="text" id="card_name" name="card_name" required
                                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
                                     </div>
                                     
-                                    <!-- Expiration Date -->
+                                     Expiration Date 
                                     <div class="md:col-span-1">
                                         <label for="expiry_date" class="block text-sm font-medium text-gray-700 mb-2">Fecha de Expiración</label>
                                         <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/AA" required
                                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
                                     </div>
                                     
-                                    <!-- CVC -->
+                                     CVC 
                                     <div class="md:col-span-1">
                                         <label for="cvc" class="block text-sm font-medium text-gray-700 mb-2">CVC</label>
                                         <div class="relative">
@@ -321,7 +338,7 @@ get_header(); ?>
                                 </div>
                             </div>
                             
-                            <!-- PayPal Form (Hidden by default) -->
+                             PayPal Form (Hidden by default) 
                             <div id="paypal-form" class="hidden mt-6">
                                 <p class="text-gray-600 mb-4">Serás redirigido a PayPal para completar tu pago de forma segura.</p>
                                 <div class="flex justify-center">
@@ -329,7 +346,7 @@ get_header(); ?>
                                 </div>
                             </div>
                             
-                            <!-- Bank Transfer Form (Hidden by default) -->
+                             Bank Transfer Form (Hidden by default) 
                             <div id="bank-transfer-form" class="hidden mt-6">
                                 <p class="text-gray-600 mb-4">Utiliza los siguientes datos para realizar tu transferencia bancaria:</p>
                                 <div class="bg-gray-50 p-4 rounded-lg">
@@ -342,7 +359,7 @@ get_header(); ?>
                             </div>
                         </div>
                         
-                        <!-- Terms and Privacy -->
+                         Terms and Privacy 
                         <div class="pt-6">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
@@ -357,7 +374,7 @@ get_header(); ?>
                             </div>
                         </div>
                         
-                        <!-- Submit Button -->
+                         Submit Button 
                         <div class="pt-6">
                             <button type="submit" 
                                 class="w-full md:w-auto px-8 py-3 bg-secondary text-dark font-bold rounded-full hover:bg-yellow-400 transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary">
@@ -366,7 +383,7 @@ get_header(); ?>
                         </div>
                     </form>
                     
-                    <!-- Success/Error Messages -->
+                     Success/Error Messages 
                     <div id="form-messages" class="hidden mt-6">
                         <div id="success-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative hidden" role="alert">
                             <strong class="font-bold">¡Éxito!</strong>
@@ -377,7 +394,7 @@ get_header(); ?>
                             <span class="block sm:inline">Hubo un problema al procesar tu pago. Por favor, verifica los datos e intenta de nuevo.</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <!-- Security Badges -->
                 <!-- <div class="mt-8 bg-white rounded-lg shadow-custom p-8">

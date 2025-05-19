@@ -3,6 +3,11 @@
 function boilerplate_load_assets() {
   wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), '1.0', true);
   wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'));
+
+  if(class_exists('WooCommerce')){
+    wp_enqueue_script('wc-add-to-cart');
+    wp_enqueue_script('wc-cart-fragments');
+  }
 }
 
 add_action('wp_enqueue_scripts', 'boilerplate_load_assets');
@@ -13,6 +18,10 @@ function boilerplate_add_support() {
 }
 
 add_action('after_setup_theme', 'boilerplate_add_support');
+
+add_action('after_setup_theme', function() {
+    add_theme_support('woocommerce');
+});
 
 function cargar_font_awesome() {
   wp_enqueue_style(
@@ -179,3 +188,27 @@ function hondutienda_customize_contact_info($wp_customize) {
   ));
 }
 add_action('customize_register', 'hondutienda_customize_contact_info');
+
+function mytheme_add_woocommerce_support() {
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+}
+add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+
+add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+
+// Handle cart fragments
+function mytheme_woocommerce_header_add_to_cart_fragment($fragments) {
+    $fragments['span.cart-count'] = '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+    return $fragments;
+}
+add_filter('woocommerce_add_to_cart_fragments', 'mytheme_woocommerce_header_add_to_cart_fragment');
+
+// Add product class to items
+function mytheme_woocommerce_post_class($classes) {
+    $classes[] = 'bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300';
+    return $classes;
+}
+add_filter('product_cat_class', 'mytheme_woocommerce_post_class');
