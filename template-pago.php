@@ -61,7 +61,7 @@ get_header(); ?>
                 <div class="bg-white rounded-lg shadow-custom p-8">
                     <?php
                         do_action('woocommerce_before_checkout_form');
-                        woocommerce_checkout_form(WC()->checkout()); 
+                        do_action('woocommerce_checkout_form(WC()->checkout())'); 
                     ?>
                 </div>
             </div>
