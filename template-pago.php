@@ -25,7 +25,7 @@ get_header(); ?>
         <!-- Content -->
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white animate-gradient">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text  bg-gradient-to-r from-white via-gray-200 to-white animate-gradient">
                     Finalizar Compra
                 </h1>
                 <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed opacity-90">
@@ -74,7 +74,7 @@ get_header(); ?>
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold mb-3">Tu Pedido</h3>
                         <div class="border-t border-b border-gray-200 py-4 space-y-4">
-                            <?php
+                           <?php 
                              //This would be replaced with actual order items
                             $sample_items = [
                                 ['name' => 'Producto de ejemplo 1', 'price' => 125.00, 'quantity' => 1],
