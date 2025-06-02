@@ -353,7 +353,7 @@ get_header(); ?>
     </section>
 
     <!-- Newsletter -->
-    <section class="py-16 bg-gradient-to-r from-[#EA2626] to-red-500 text-white">
+    <section class="py-16 bg-gradient-to-r from-red-500 to-red-600 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-4 animate-fadeIn">¡No te pierdas nuestras ofertas!</h2>
             <p class="text-xl opacity-90 mb-8 animate-fadeIn delay-100">Suscríbete a nuestro newsletter y recibe descuentos exclusivos</p>

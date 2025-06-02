@@ -8,11 +8,11 @@
 }
 
 .woocommerce .price {
-    @apply text-xl font-bold text-primary;
+    @apply text-xl font-bold text-[#57D0E1];
 }
 
 .woocommerce .button {
-    @apply bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors;
+    @apply bg-[#57D0E1] text-white px-4 py-2 rounded  transition-colors;
 }
 
 
