@@ -58,6 +58,98 @@ get_header( 'shop' ); ?>
     do_action( 'woocommerce_before_main_content' );
     ?>
 
+    <!-- Custom Breadcrumb -->
+<div class="bg-gray-50 border-b border-gray-200 py-4 mb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex items-center space-x-2 text-sm" aria-label="Breadcrumb">
+            <!-- Home Icon -->
+            <a href="<?php echo esc_url(home_url('/')); ?>" 
+               class="group flex items-center text-gray-500 hover:text-[#0090D9] transition-colors duration-300">
+                <svg class="w-5 h-5 mr-1 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                </svg>
+                <span class="font-medium">Inicio</span>
+            </a>
+
+            <!-- Separator -->
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+
+            <?php
+            // Si estamos en una categoría de producto
+            if (is_product_category()) {
+                $current_cat = get_queried_object();
+                
+                // Mostrar categorías padre si existen
+                if ($current_cat->parent) {
+                    $parent_cats = get_ancestors($current_cat->term_id, 'product_cat');
+                    $parent_cats = array_reverse($parent_cats);
+                    
+                    foreach ($parent_cats as $parent_id) {
+                        $parent_cat = get_term($parent_id, 'product_cat');
+                        echo '<a href="' . esc_url(get_term_link($parent_cat)) . '" class="text-gray-500 hover:text-[#0090D9] transition-colors duration-300 font-medium hover:bg-gray-100 px-2 py-1 rounded">' . esc_html($parent_cat->name) . '</a>';
+                        echo '<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>';
+                    }
+                }
+                
+                // Categoría actual
+                echo '<span class="bg-gradient-to-r from-[#57D0E1] to-[#0090D9] text-white px-3 py-1 rounded-full font-semibold text-sm shadow-md">' . esc_html($current_cat->name) . '</span>';
+                
+            } elseif (is_product_tag()) {
+                // Si estamos en una etiqueta de producto
+                $current_tag = get_queried_object();
+                echo '<a href="' . esc_url(wc_get_page_permalink('shop')) . '" class="text-gray-500 hover:text-[#0090D9] transition-colors duration-300 font-medium hover:bg-gray-100 px-2 py-1 rounded">Tienda</a>';
+                echo '<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>';
+                echo '<span class="bg-gradient-to-r from-[#57D0E1] to-[#0090D9] text-white px-3 py-1 rounded-full font-semibold text-sm shadow-md flex items-center">';
+                echo '<svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>';
+                echo esc_html($current_tag->name) . '</span>';
+                
+            } else {
+                // Página principal de tienda
+                echo '<span class="bg-gradient-to-r from-[#57D0E1] to-[#0090D9] text-white px-3 py-1 rounded-full font-semibold text-sm shadow-md flex items-center">';
+                echo '<svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5zM10 18V8.414L4 4.414V16h12V4.414L10 8.414V18z" clip-rule="evenodd"></path></svg>';
+                echo 'Tienda</span>';
+            }
+            ?>
+        </nav>
+        
+        <!-- Información adicional -->
+        <div class="mt-3 flex flex-wrap items-center gap-4">
+            <?php if (is_product_category()) : 
+                $current_cat = get_queried_object();
+                if ($current_cat->description) : ?>
+                    <p class="text-gray-600 text-sm bg-white px-3 py-1 rounded-lg border border-gray-200 shadow-sm">
+                        <?php echo wp_kses_post($current_cat->description); ?>
+                    </p>
+                <?php endif; ?>
+                
+                <!-- Contador de productos en la categoría -->
+                <span class="inline-flex items-center text-xs text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-200">
+                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <?php echo $current_cat->count; ?> producto<?php echo $current_cat->count != 1 ? 's' : ''; ?>
+                </span>
+            <?php endif; ?>
+            
+            <?php if (is_shop()) : ?>
+                <!-- Total de productos en la tienda -->
+                <?php 
+                $total_products = wp_count_posts('product');
+                $published_products = $total_products->publish;
+                ?>
+                <span class="inline-flex items-center text-xs text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-200">
+                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <?php echo $published_products; ?> producto<?php echo $published_products != 1 ? 's' : ''; ?> disponibles
+                </span>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
@@ -286,8 +378,125 @@ do_action( 'woocommerce_after_main_content' );
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-do_action( 'woocommerce_sidebar' );
+/*do_action( 'woocommerce_sidebar' );*/
 ?>
+
+
+<!-- Custom Pagination -->
+<?php 
+// Obtener información de paginación
+global $wp_query;
+$total_pages = $wp_query->max_num_pages;
+$current_page = max(1, get_query_var('paged'));
+
+if ($total_pages > 1) : 
+?>
+<div class="flex justify-center mt-16 mb-8 animate-fadeIn delay-400">
+    <nav class="flex items-center space-x-1" aria-label="Paginación">
+        <?php
+        // Botón anterior
+        if ($current_page > 1) :
+            $prev_link = get_pagenum_link($current_page - 1);
+        ?>
+            <a href="<?php echo esc_url($prev_link); ?>" 
+               class="group flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-[#57D0E1] hover:border-[#57D0E1] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </a>
+        <?php else : ?>
+            <span class="flex items-center justify-center w-10 h-10 bg-gray-100 border border-gray-200 rounded-lg text-gray-400 cursor-not-allowed">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </span>
+        <?php endif; ?>
+
+        <?php
+        // Lógica para mostrar números de página
+        $start_page = max(1, $current_page - 2);
+        $end_page = min($total_pages, $current_page + 2);
+        
+        // Mostrar primera página si no está en el rango
+        if ($start_page > 1) : ?>
+            <a href="<?php echo esc_url(get_pagenum_link(1)); ?>" 
+               class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-[#57D0E1] hover:border-[#57D0E1] hover:text-white transition-all duration-300 text-gray-700 font-medium shadow-sm hover:shadow-md">
+                1
+            </a>
+            <?php if ($start_page > 2) : ?>
+                <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <?php
+        // Mostrar páginas en el rango
+        for ($i = $start_page; $i <= $end_page; $i++) :
+            if ($i == $current_page) : ?>
+                <span class="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-[#57D0E1] to-[#0090D9] text-white rounded-lg font-bold shadow-md transform scale-110">
+                    <?php echo $i; ?>
+                </span>
+            <?php else : ?>
+                <a href="<?php echo esc_url(get_pagenum_link($i)); ?>" 
+                   class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-[#57D0E1] hover:border-[#57D0E1] hover:text-white transition-all duration-300 text-gray-700 font-medium shadow-sm hover:shadow-md hover:scale-105">
+                    <?php echo $i; ?>
+                </a>
+            <?php endif; ?>
+        <?php endfor; ?>
+
+        <?php
+        // Mostrar última página si no está en el rango
+        if ($end_page < $total_pages) : ?>
+            <?php if ($end_page < $total_pages - 1) : ?>
+                <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
+            <?php endif; ?>
+            <a href="<?php echo esc_url(get_pagenum_link($total_pages)); ?>" 
+               class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-[#57D0E1] hover:border-[#57D0E1] hover:text-white transition-all duration-300 text-gray-700 font-medium shadow-sm hover:shadow-md">
+                <?php echo $total_pages; ?>
+            </a>
+        <?php endif; ?>
+
+        <?php
+        // Botón siguiente
+        if ($current_page < $total_pages) :
+            $next_link = get_pagenum_link($current_page + 1);
+        ?>
+            <a href="<?php echo esc_url($next_link); ?>" 
+               class="group flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-[#57D0E1] hover:border-[#57D0E1] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        <?php else : ?>
+            <span class="flex items-center justify-center w-10 h-10 bg-gray-100 border border-gray-200 rounded-lg text-gray-400 cursor-not-allowed">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </span>
+        <?php endif; ?>
+    </nav>
+    
+    <!-- Información de página actual -->
+    <div class="ml-8 flex items-center text-sm text-gray-600">
+        <span class="bg-gray-100 px-3 py-2 rounded-lg">
+            Página <?php echo $current_page; ?> de <?php echo $total_pages; ?>
+        </span>
+    </div>
+</div>
+
+<!-- Información adicional de resultados -->
+<div class="text-center text-gray-600 mb-8">
+    <?php
+    $posts_per_page = get_option('posts_per_page');
+    $total_products = $wp_query->found_posts;
+    $start_product = (($current_page - 1) * $posts_per_page) + 1;
+    $end_product = min($current_page * $posts_per_page, $total_products);
+    ?>
+    <p class="text-sm">
+        Mostrando <span class="font-semibold text-[#0090D9]"><?php echo $start_product; ?>-<?php echo $end_product; ?></span> 
+        de <span class="font-semibold text-[#0090D9]"><?php echo $total_products; ?></span> productos
+    </p>
+</div>
+<?php endif; ?>
 
 <style>
     @keyframes fadeIn {
@@ -351,6 +560,146 @@ do_action( 'woocommerce_sidebar' );
         border-left: 4px solid #dc2626;
         color: #dc2626;
     }
+
+    /* Estilos adicionales para paginación personalizada */
+.pagination-container {
+    perspective: 1000px;
+}
+
+/* Efecto hover mejorado para botones de paginación */
+nav a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(87, 208, 225, 0.3);
+}
+
+/* Animación para página activa */
+nav span.active-page {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(87, 208, 225, 0.4);
+    }
+    50% {
+        box-shadow: 0 6px 20px rgba(87, 208, 225, 0.6);
+    }
+}
+
+/* Efecto de ripple al hacer click */
+nav a {
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.6s, height 0.6s;
+    transform: translate(-50%, -50%);
+}
+
+nav a:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 640px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    nav a, nav span {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 0.875rem;
+    }
+    
+    .pagination-info {
+        margin-top: 1rem;
+        margin-left: 0;
+    }
+}
+
+/* Ocultar paginación por defecto de WooCommerce */
+    .woocommerce-pagination {
+        display: none !important;
+    }
+
+/* Ocultar breadcrumb por defecto de WooCommerce */
+.woocommerce-breadcrumb {
+    display: none !important;
+}
+
+/* Estilos para breadcrumb personalizado */
+.breadcrumb-container {
+    backdrop-filter: blur(10px);
+}
+
+/* Animación suave para los enlaces del breadcrumb */
+nav a {
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(87, 208, 225, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+nav a:hover::before {
+    left: 100%;
+}
+
+/* Efecto de elevación para el breadcrumb activo */
+.breadcrumb-active {
+    animation: breadcrumbGlow 3s ease-in-out infinite;
+}
+
+@keyframes breadcrumbGlow {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(87, 208, 225, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(87, 208, 225, 0.5);
+    }
+}
+
+/* Responsive para breadcrumb */
+@media (max-width: 640px) {
+    .breadcrumb-container nav {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    .breadcrumb-container nav span,
+    .breadcrumb-container nav a {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .breadcrumb-container .mt-3 {
+        margin-top: 0.75rem;
+    }
+    
+    .breadcrumb-container .mt-3 > * {
+        font-size: 0.75rem;
+    }
+}    
 </style>
 
 <?php get_footer( 'shop' ); ?>
