@@ -61,7 +61,7 @@ get_header( 'shop' ); ?>
     <!-- Custom Breadcrumb -->
 <div class="bg-gray-50 border-b border-gray-200 py-4 mb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="flex items-center space-x-2 text-sm" aria-label="Breadcrumb">
+        <navigation class="flex items-center space-x-2 text-sm" aria-label="Breadcrumb">
             <!-- Home Icon -->
             <a href="<?php echo esc_url(home_url('/')); ?>" 
                class="group flex items-center text-gray-500 hover:text-[#0090D9] transition-colors duration-300">
@@ -112,7 +112,7 @@ get_header( 'shop' ); ?>
                 echo 'Tienda</span>';
             }
             ?>
-        </nav>
+        </navigation>
         
         <!-- Información adicional -->
         <div class="mt-3 flex flex-wrap items-center gap-4">
@@ -285,27 +285,54 @@ get_header( 'shop' ); ?>
                         </div>
                         
                         <!-- Add to Cart Button -->
+                        
                         <?php if($product->is_purchasable() && $product->is_in_stock()) : ?>
-                            <?php
-                            echo apply_filters(
-                                'woocommerce_loop_add_to_cart_link',
-                                sprintf(
-                                    '<a href="%s" data-quantity="%s" class="%s" %s><svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>%s</a>',
-                                    esc_url( $product->add_to_cart_url() ),
-                                    esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-                                    esc_attr( 'w-full bg-[#57D0E1] text-white py-2 px-4 rounded-lg hover:bg-[#0090D9] transition-colors duration-300 flex items-center justify-center add-to-cart-btn' ),
-                                    isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-                                    esc_html( $product->add_to_cart_text() )
-                                ),
-                                $product,
-                                $args ?? []
-                            );
+                        <?php
+                        // Obtener la URL correcta del producto para agregar al carrito
+                        $add_to_cart_url = $product->add_to_cart_url();
+                        $add_to_cart_text = $product->add_to_cart_text();
+                        $product_type = $product->get_type();
+                        
+                        // Para productos simples, usar AJAX
+                        if ($product_type === 'simple') :
                             ?>
-                        <?php else : ?>
-                            <button class="w-full bg-gray-400 text-white py-2 px-4 rounded-lg cursor-not-allowed" disabled>
-                                Agotado
+                            <button 
+                                type="button"
+                                class="w-full bg-[#57D0E1] text-white py-2 px-4 rounded-lg hover:bg-[#0090D9] transition-colors duration-300 flex items-center justify-center add-to-cart-btn ajax_add_to_cart"
+                                data-product_id="<?php echo esc_attr($product_id); ?>"
+                                data-product_sku="<?php echo esc_attr($product->get_sku()); ?>"
+                                data-quantity="1"
+                                aria-label="<?php echo esc_html($add_to_cart_text); ?>"
+                            >
+                                <svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                                <?php echo esc_html($add_to_cart_text); ?>
                             </button>
+                        <?php else : 
+                            // Para productos variables u otros tipos, ir a la página del producto
+                            ?>
+                            <a 
+                                href="<?php echo esc_url($product_link); ?>" 
+                                class="w-full bg-[#57D0E1] text-white py-2 px-4 rounded-lg hover:bg-[#0090D9] transition-colors duration-300 flex items-center justify-center"
+                            >
+                                <svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                <?php echo esc_html($add_to_cart_text); ?>
+                            </a>
                         <?php endif; ?>
+                        
+                    <?php else : ?>
+                        <button class="w-full bg-gray-400 text-white py-2 px-4 rounded-lg cursor-not-allowed" disabled>
+                            <?php if (!$product->is_in_stock()) : ?>
+                                Agotado
+                            <?php else : ?>
+                                No disponible
+                            <?php endif; ?>
+                        </button>
+                    <?php endif; ?>
                     </div>
                 </div>
                 
@@ -392,7 +419,7 @@ $current_page = max(1, get_query_var('paged'));
 if ($total_pages > 1) : 
 ?>
 <div class="flex justify-center mt-16 mb-8 animate-fadeIn delay-400">
-    <nav class="flex items-center space-x-1" aria-label="Paginación">
+    <navigation class="flex items-center space-x-1" aria-label="Paginación">
         <?php
         // Botón anterior
         if ($current_page > 1) :
@@ -473,7 +500,7 @@ if ($total_pages > 1) :
                 </svg>
             </span>
         <?php endif; ?>
-    </nav>
+    </navigation>
     
     <!-- Información de página actual -->
     <div class="ml-8 flex items-center text-sm text-gray-600">
@@ -567,13 +594,13 @@ if ($total_pages > 1) :
 }
 
 /* Efecto hover mejorado para botones de paginación */
-nav a:hover {
+.navigation a:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(87, 208, 225, 0.3);
 }
 
 /* Animación para página activa */
-nav span.active-page {
+.navigation span.active-page {
     animation: pulseGlow 2s infinite;
 }
 
@@ -587,12 +614,12 @@ nav span.active-page {
 }
 
 /* Efecto de ripple al hacer click */
-nav a {
+.navigation a {
     position: relative;
     overflow: hidden;
 }
 
-nav a::before {
+.navigation a::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -605,19 +632,19 @@ nav a::before {
     transform: translate(-50%, -50%);
 }
 
-nav a:active::before {
+.navigation a:active::before {
     width: 300px;
     height: 300px;
 }
 
 /* Responsive para móviles */
 @media (max-width: 640px) {
-    nav {
+    .navigation {
         flex-wrap: wrap;
         gap: 0.25rem;
     }
     
-    nav a, nav span {
+    .navigation a, navigation span {
         width: 2.25rem;
         height: 2.25rem;
         font-size: 0.875rem;
@@ -645,12 +672,12 @@ nav a:active::before {
 }
 
 /* Animación suave para los enlaces del breadcrumb */
-nav a {
+.navigation a {
     position: relative;
     overflow: hidden;
 }
 
-nav a::before {
+.navigation a::before {
     content: '';
     position: absolute;
     top: 0;
@@ -661,7 +688,7 @@ nav a::before {
     transition: left 0.5s;
 }
 
-nav a:hover::before {
+.navigation a:hover::before {
     left: 100%;
 }
 
@@ -681,13 +708,13 @@ nav a:hover::before {
 
 /* Responsive para breadcrumb */
 @media (max-width: 640px) {
-    .breadcrumb-container nav {
+    .breadcrumb-container navigation {
         flex-wrap: wrap;
         gap: 0.25rem;
     }
     
-    .breadcrumb-container nav span,
-    .breadcrumb-container nav a {
+    .breadcrumb-container navigation span,
+    .breadcrumb-container navigation a {
         font-size: 0.75rem;
         padding: 0.25rem 0.5rem;
     }
@@ -701,5 +728,81 @@ nav a:hover::before {
     }
 }    
 </style>
+
+<script>
+// JavaScript para manejar AJAX add to cart
+jQuery(document).ready(function($) {
+    // Manejar click en botón agregar al carrito
+    $(document).on('click', '.ajax_add_to_cart', function(e) {
+        e.preventDefault();
+        
+        var $button = $(this);
+        var product_id = $button.data('product_id');
+        var quantity = $button.data('quantity') || 1;
+        
+        // Validar que tenemos un product_id válido
+        if (!product_id || product_id === '' || product_id === '0') {
+            console.error('ID de producto inválido:', product_id);
+            alert('Error: ID de producto inválido');
+            return;
+        }
+        
+        // Deshabilitar botón y mostrar loading
+        $button.prop('disabled', true);
+        var originalText = $button.html();
+        $button.html('<svg class="animate-spin w-5 h-5 mr-2 inline" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Agregando...');
+        
+        // Realizar petición AJAX
+        $.ajax({
+            type: 'POST',
+            url: wc_add_to_cart_params.ajax_url,
+            data: {
+                action: 'woocommerce_add_to_cart',
+                product_id: product_id,
+                quantity: quantity,
+                product_sku: $button.data('product_sku') || '',
+            },
+            success: function(response) {
+                if (response.error && response.product_url) {
+                    window.location = response.product_url;
+                    return;
+                }
+                
+                // Actualizar fragmentos (carrito, etc.)
+                if (response.fragments) {
+                    $.each(response.fragments, function(key, value) {
+                        $(key).replaceWith(value);
+                    });
+                }
+                
+                // Mostrar mensaje de éxito
+                $button.html('<svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>¡Agregado!');
+                
+                // Trigger events
+                $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $button]);
+                
+                // Restaurar botón después de 2 segundos
+                setTimeout(function() {
+                    $button.html(originalText);
+                    $button.prop('disabled', false);
+                }, 2000);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error AJAX:', error);
+                console.error('Response:', xhr.responseText);
+                
+                // Mostrar error
+                $button.html('<svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>Error');
+                
+                // Restaurar botón después de 3 segundos
+                setTimeout(function() {
+                    $button.html(originalText);
+                    $button.prop('disabled', false);
+                }, 3000);
+            }
+        });
+    });
+});
+</script>
 
 <?php get_footer( 'shop' ); ?>

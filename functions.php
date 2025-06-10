@@ -501,3 +501,45 @@ function hondutienda_add_custom_woocommerce_classes($classes) {
     return $classes;
 }
 add_filter('body_class', 'hondutienda_add_custom_woocommerce_classes');
+
+// Verificar que WooCommerce AJAX add to cart funcione correctamente
+function verificar_wc_ajax_add_to_cart() {
+    // Asegurar que los scripts de WooCommerce se carguen
+    if (is_shop() || is_product_category() || is_product_tag()) {
+        wp_enqueue_script('wc-add-to-cart');
+    }
+}
+add_action('wp_enqueue_scripts', 'verificar_wc_ajax_add_to_cart');
+
+// Agregar soporte para AJAX add to cart en páginas de archivo
+function habilitar_ajax_add_to_cart_archive() {
+    if (is_shop() || is_product_category() || is_product_tag()) {
+        wp_localize_script('wc-add-to-cart', 'wc_add_to_cart_params', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'wc_ajax_url' => WC_AJAX::get_endpoint('%%endpoint%%'),
+            'i18n_view_cart' => esc_attr__('View cart', 'woocommerce'),
+            'cart_url' => apply_filters('woocommerce_add_to_cart_redirect', wc_get_cart_url(), null),
+            'is_cart' => is_cart(),
+            'cart_redirect_after_add' => get_option('woocommerce_cart_redirect_after_add')
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'habilitar_ajax_add_to_cart_archive', 15);
+
+// Debug function - temporal para identificar problemas
+function debug_product_data() {
+    if (isset($_GET['debug_products']) && current_user_can('manage_options')) {
+        global $product;
+        if ($product) {
+            echo '<div style="background:#f0f0f0;padding:10px;margin:10px;border:1px solid #ccc;">';
+            echo '<strong>Debug Info:</strong><br>';
+            echo 'Product ID: ' . $product->get_id() . '<br>';
+            echo 'Product Type: ' . $product->get_type() . '<br>';
+            echo 'Is Purchasable: ' . ($product->is_purchasable() ? 'Sí' : 'No') . '<br>';
+            echo 'In Stock: ' . ($product->is_in_stock() ? 'Sí' : 'No') . '<br>';
+            echo 'Add to Cart URL: ' . $product->add_to_cart_url() . '<br>';
+            echo '</div>';
+        }
+    }
+}
+add_action('woocommerce_shop_loop', 'debug_product_data');
