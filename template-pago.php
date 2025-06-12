@@ -25,7 +25,7 @@ get_header(); ?>
         <!-- Content -->
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text  bg-gradient-to-r from-white via-gray-200 to-white animate-gradient">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text bg-gradient-to-r from-white via-gray-200 to-white animate-gradient">
                     Finalizar Compra
                 </h1>
                 <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed opacity-90">
@@ -47,391 +47,155 @@ get_header(); ?>
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <?php
+        // Verificar si WooCommerce está activo y hay productos en el carrito
+        if (class_exists('WooCommerce') && !WC()->cart->is_empty()) {
+            // Obtener el checkout object
+            $checkout = WC()->checkout();
+        ?>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <!-- Left Column (Order Review) -->
-            <div class="md:col-span-1">
-                <div class="bg-white rounded-lg shadow-custom p-8">
-                 <?php woocommerce_order_review(); ?>
-                </div>                
-            </div>
-
-            <!-- Right Column (Your styled payment form) -->
-            <div class="md:col-span-2">
-                 
-                <div class="bg-white rounded-lg shadow-custom p-8">
-                    <?php
-                        do_action('woocommerce_before_checkout_form');
-                        do_action('woocommerce_checkout_form(WC()->checkout())'); 
-                    ?>
-                </div>
-            </div>
-             <!-- Payment Information 
-            <div class="md:col-span-1">
-                <div class="bg-white rounded-lg shadow-custom p-8">
+            <div class="lg:col-span-1 lg:order-2">
+                <div class="bg-white rounded-lg shadow-custom p-8 sticky top-8">
                     <h2 class="text-2xl font-bold mb-6">Resumen de Compra</h2>
                     
-                     Order Summary 
-                    <div class="mb-6">
-                        <h3 class="text-lg font-semibold mb-3">Tu Pedido</h3>
-                        <div class="border-t border-b border-gray-200 py-4 space-y-4">
-                           <?php 
-                             //This would be replaced with actual order items
-                            $sample_items = [
-                                ['name' => 'Producto de ejemplo 1', 'price' => 125.00, 'quantity' => 1],
-                                ['name' => 'Producto de ejemplo 2', 'price' => 75.50, 'quantity' => 2],
-                            ];
-                            
-                            foreach ($sample_items as $item) :
-                            ?>
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="font-medium"><?php echo $item['name']; ?></p>
-                                    <p class="text-sm text-gray-500">Cantidad: <?php echo $item['quantity']; ?></p>
+                    <!-- WooCommerce Order Review -->
+                    <div id="order_review" class="woocommerce-checkout-review-order">
+                        <?php woocommerce_order_review(); ?>
+                    </div>
+                    
+                    <!-- Security Badges -->
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <div class="flex flex-col items-center">
+                            <h3 class="text-lg font-semibold mb-4 text-center">Pago Seguro Garantizado</h3>
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <div class="flex items-center bg-gray-100 px-3 py-2 rounded text-xs">
+                                    <i class="fas fa-lock text-primary mr-2"></i>
+                                    <span>SSL Secure</span>
                                 </div>
-                                <p class="font-semibold">$ <?php echo number_format($item['price'] * $item['quantity'], 2); ?></p>
+                                <div class="flex items-center bg-gray-100 px-3 py-2 rounded text-xs">
+                                    <i class="fas fa-shield-alt text-primary mr-2"></i>
+                                    <span>Protección</span>
+                                </div>
+                                <div class="flex items-center bg-gray-100 px-3 py-2 rounded text-xs">
+                                    <i class="fas fa-credit-card text-primary mr-2"></i>
+                                    <span>PCI DSS</span>
+                                </div>
                             </div>
-                            <?php endforeach; ?>
                         </div>
                     </div>
                     
-                     Order Totals 
-                    <div class="space-y-3">
-                        <div class="flex justify-between">
-                            <p class="text-gray-600">Subtotal</p>
-                            <p class="font-medium">$ 276.00</p>
+                    <!-- Help Section -->
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-4">¿Necesitas ayuda?</h3>
+                        <p class="text-gray-600 text-sm mb-4">Si tienes alguna pregunta sobre tu pedido, contáctanos:</p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>info@hondutienda.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <span>+1 823-596-3738</span>
+                            </div>
                         </div>
-                        <div class="flex justify-between">
-                            <p class="text-gray-600">Envío</p>
-                            <p class="font-medium">$ 50.00</p>
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="text-gray-600">Impuestos</p>
-                            <p class="font-medium">$ 41.40</p>
-                        </div>
-                        <div class="flex justify-between border-t border-gray-200 pt-3 mt-3">
-                            <p class="font-bold text-lg">Total</p>
-                            <p class="font-bold text-lg text-primary">$ 367.40</p>
-                        </div>
-                    </div>
-                </div>
-                
-                 Shipping Info 
-                <div class="bg-white rounded-lg shadow-custom p-8 mt-8">
-                    <h2 class="text-2xl font-bold mb-6">Dirección de Envío</h2>
-                    <div class="flex items-start mb-6">
-                        <div class="flex-shrink-0 bg-secondary rounded-full p-3">
-                            <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-semibold mb-1">Dirección de Entrega</h3>
-                            <p class="text-gray-600" id="shipping-address-display">
-                                Por favor, completa tus datos de envío en el formulario.
-                            </p>
-                        </div>
-                    </div>
-                    
-                     Estimated Delivery 
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-secondary rounded-full p-3">
-                            <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-semibold mb-1">Entrega Estimada</h3>
-                            <p class="text-gray-600">3-5 días hábiles</p>
-                        </div>
-                    </div>
-                </div>
-                
-                 Need Help? 
-                <div class="bg-white rounded-lg shadow-custom p-8 mt-8">
-                    <h2 class="text-2xl font-bold mb-6">¿Necesitas ayuda?</h2>
-                    <p class="text-gray-600 mb-4">Si tienes alguna pregunta sobre tu pedido, contáctanos:</p>
-                    <div class="flex items-center mb-2">
-                        <svg class="w-5 h-5 text-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        <span>info@hondutienda.com</span>
-                    </div>
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 text-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                        <span>+1 823-596-3738</span>
                     </div>
                 </div>
             </div>
-            
-             Payment Form 
-            <div class="md:col-span-2">
+
+            <!-- Right Column (Checkout Form) -->
+            <div class="lg:col-span-2 lg:order-1">
                 <div class="bg-white rounded-lg shadow-custom p-8">
                     <h2 class="text-2xl font-bold mb-6">Información de Pago</h2>
-                    <form id="payment-form" class="space-y-6">
-                        <?php wp_nonce_field('payment_form_nonce', 'payment_nonce'); ?>
+                    
+                    <?php
+                    // Verificar si el usuario debe estar logueado
+                    if (!$checkout->is_registration_enabled() && $checkout->is_registration_required() && !is_user_logged_in()) {
+                        echo '<div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-6">';
+                        echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('Debes iniciar sesión para completar la compra.', 'woocommerce')));
+                        echo '</div>';
+                        echo '<div class="text-center"><a href="' . esc_url(wp_login_url(get_permalink())) . '" class="btn btn-primary">Iniciar Sesión</a></div>';
+                    } else {
+                        // Acciones antes del formulario de checkout
+                        do_action('woocommerce_before_checkout_form', $checkout);
+                    ?>
+                    
+                    <!-- Formulario de Checkout de WooCommerce -->
+                    <form name="checkout" method="post" class="checkout woocommerce-checkout custom-checkout-form" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__('Checkout', 'woocommerce'); ?>">
                         
-                         Personal Information Section 
-                        <div>
-                            <h3 class="text-xl font-semibold mb-4">Información Personal</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                 First Name 
-                                <div>
-                                    <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
-                                    <input type="text" id="first_name" name="first_name" required
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
+                        <?php if ($checkout->get_checkout_fields()) : ?>
+                            <?php do_action('woocommerce_checkout_before_customer_details'); ?>
+                            
+                            <div id="customer_details" class="space-y-8">
+                                <!-- Información de Facturación -->
+                                <div class="billing-fields">
+                                    <h3 class="text-xl font-semibold mb-4">Información Personal</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <?php do_action('woocommerce_checkout_billing'); ?>
+                                    </div>
                                 </div>
                                 
-                                 Last Name 
-                                <div>
-                                    <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Apellido</label>
-                                    <input type="text" id="last_name" name="last_name" required
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
+                                <!-- Información de Envío -->
+                                <?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
+                                <div class="shipping-fields pt-6 border-t border-gray-200">
+                                    <h3 class="text-xl font-semibold mb-4">Dirección de Envío</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <?php do_action('woocommerce_checkout_shipping'); ?>
+                                    </div>
                                 </div>
+                                <?php endif; ?>
                             </div>
                             
-                             Email 
-                            <div class="mt-6">
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
-                                <input type="email" id="email" name="email" required
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                            </div>
-                            
-                             Phone 
-                            <div class="mt-6">
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
-                                <input type="tel" id="phone" name="phone" required
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                            </div>
-                        </div>
+                            <?php do_action('woocommerce_checkout_after_customer_details'); ?>
+                        <?php endif; ?>
                         
-                         Shipping Address Section 
-                        <div class="pt-6 border-t border-gray-200">
-                            <h3 class="text-xl font-semibold mb-4">Dirección de Envío</h3>
-                             Street Address 
-                            <div>
-                                <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Dirección</label>
-                                <input type="text" id="address" name="address" required
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                            </div>
-                            
-                             Apartment/Suite 
-                            <div class="mt-6">
-                                <label for="address2" class="block text-sm font-medium text-gray-700 mb-2">Apartamento, suite, etc. (opcional)</label>
-                                <input type="text" id="address2" name="address2"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                            </div>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                                 City 
-                                <div>
-                                    <label for="city" class="block text-sm font-medium text-gray-700 mb-2">Ciudad</label>
-                                    <input type="text" id="city" name="city" required
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                                </div>
-                                
-                                 State 
-                                <div>
-                                    <label for="state" class="block text-sm font-medium text-gray-700 mb-2">Departamento</label>
-                                    <select id="state" name="state" required
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                                        <option value="">Seleccionar...</option>
-                                        <option value="FM">Francisco Morazán</option>
-                                        <option value="CT">Cortés</option>
-                                        <option value="AT">Atlántida</option>
-                                        <option value="CP">Copán</option>
-                                        <option value="CM">Comayagua</option>
-                                         Add more departments as needed 
-                                    </select>
-                                </div>
-                                
-                                 Zip Code 
-                                <div>
-                                    <label for="zip" class="block text-sm font-medium text-gray-700 mb-2">Código Postal</label>
-                                    <input type="text" id="zip" name="zip" required
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                                </div>
-                            </div>
-                        </div>
-                        
-                         Payment Method Section 
-                        <div class="pt-6 border-t border-gray-200">
+                        <!-- Métodos de Pago -->
+                        <div class="payment-methods pt-6 border-t border-gray-200">
                             <h3 class="text-xl font-semibold mb-4">Método de Pago</h3>
                             
-                             Payment Type Selection 
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Selecciona un método de pago</label>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div class="relative">
-                                        <input type="radio" id="credit_card" name="payment_method" value="credit_card" class="sr-only" checked>
-                                        <label for="credit_card" class="cursor-pointer block p-4 border rounded-lg text-center hover:bg-gray-50 peer-checked:border-secondary peer-checked:bg-secondary/10 transition-all duration-300">
-                                            <i class="far fa-credit-card text-2xl mb-2"></i>
-                                            <span class="block">Tarjeta de Crédito</span>
-                                        </label>
-                                    </div>
-                                    <div class="relative">
-                                        <input type="radio" id="paypal" name="payment_method" value="paypal" class="sr-only">
-                                        <label for="paypal" class="cursor-pointer block p-4 border rounded-lg text-center hover:bg-gray-50 peer-checked:border-secondary peer-checked:bg-secondary/10 transition-all duration-300">
-                                            <i class="fab fa-paypal text-2xl mb-2"></i>
-                                            <span class="block">PayPal</span>
-                                        </label>
-                                    </div>
-                                    <div class="relative">
-                                        <input type="radio" id="bank_transfer" name="payment_method" value="bank_transfer" class="sr-only">
-                                        <label for="bank_transfer" class="cursor-pointer block p-4 border rounded-lg text-center hover:bg-gray-50 peer-checked:border-secondary peer-checked:bg-secondary/10 transition-all duration-300">
-                                            <i class="fas fa-university text-2xl mb-2"></i>
-                                            <span class="block">Transferencia</span>
-                                        </label>
-                                    </div>
-                                </div>
+                            <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
+                            <?php do_action('woocommerce_checkout_before_order_review'); ?>
+                            
+                            <div id="payment" class="woocommerce-checkout-payment">
+                                <?php woocommerce_checkout_payment(); ?>
                             </div>
                             
-                             Credit Card Form 
-                            <div id="credit-card-form">
-                                 Card Number 
-                                <div class="mb-6">
-                                    <label for="card_number" class="block text-sm font-medium text-gray-700 mb-2">Número de Tarjeta</label>
-                                    <div class="relative">
-                                        <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456" required
-                                            class="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <i class="far fa-credit-card text-gray-400"></i>
-                                        </div>
-                                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                            <div class="flex space-x-1">
-                                                <i class="fab fa-cc-visa text-blue-600"></i>
-                                                <i class="fab fa-cc-mastercard text-red-500"></i>
-                                                <i class="fab fa-cc-amex text-blue-400"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                     Cardholder Name 
-                                    <div class="md:col-span-1">
-                                        <label for="card_name" class="block text-sm font-medium text-gray-700 mb-2">Nombre en la Tarjeta</label>
-                                        <input type="text" id="card_name" name="card_name" required
-                                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                                    </div>
-                                    
-                                     Expiration Date 
-                                    <div class="md:col-span-1">
-                                        <label for="expiry_date" class="block text-sm font-medium text-gray-700 mb-2">Fecha de Expiración</label>
-                                        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/AA" required
-                                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                                    </div>
-                                    
-                                     CVC 
-                                    <div class="md:col-span-1">
-                                        <label for="cvc" class="block text-sm font-medium text-gray-700 mb-2">CVC</label>
-                                        <div class="relative">
-                                            <input type="text" id="cvc" name="cvc" placeholder="123" required
-                                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-                                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                <i class="fas fa-question-circle text-gray-400" title="El código de seguridad de 3 o 4 dígitos al reverso de tu tarjeta"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                             PayPal Form (Hidden by default) 
-                            <div id="paypal-form" class="hidden mt-6">
-                                <p class="text-gray-600 mb-4">Serás redirigido a PayPal para completar tu pago de forma segura.</p>
-                                <div class="flex justify-center">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/paypal-badge.png" alt="PayPal" class="h-12">
-                                </div>
-                            </div>
-                            
-                             Bank Transfer Form (Hidden by default) 
-                            <div id="bank-transfer-form" class="hidden mt-6">
-                                <p class="text-gray-600 mb-4">Utiliza los siguientes datos para realizar tu transferencia bancaria:</p>
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <p><strong>Banco:</strong> Banco Nacional de Honduras</p>
-                                    <p><strong>Cuenta:</strong> 123456789</p>
-                                    <p><strong>Titular:</strong> HonduTienda, S.A.</p>
-                                    <p><strong>Referencia:</strong> Tu número de pedido se generará al finalizar</p>
-                                </div>
-                                <p class="text-sm text-gray-500 mt-4">Una vez realizada la transferencia, envía el comprobante a pagos@hondutienda.com para procesar tu pedido.</p>
-                            </div>
-                        </div>
-                        
-                         Terms and Privacy 
-                        <div class="pt-6">
-                            <div class="flex items-start">
-                                <div class="flex items-center h-5">
-                                    <input id="terms" name="terms" type="checkbox" required
-                                        class="h-4 w-4 text-secondary focus:ring-secondary border-gray-300 rounded">
-                                </div>
-                                <div class="ml-3 text-sm">
-                                    <label for="terms" class="font-medium text-gray-700">
-                                        Acepto los <a href="#" class="text-secondary hover:underline">Términos y Condiciones</a> y la <a href="#" class="text-secondary hover:underline">Política de Privacidad</a>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                         Submit Button 
-                        <div class="pt-6">
-                            <button type="submit" 
-                                class="w-full md:w-auto px-8 py-3 bg-secondary text-dark font-bold rounded-full hover:bg-yellow-400 transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary">
-                                Realizar Pago Seguro
-                            </button>
+                            <?php do_action('woocommerce_checkout_after_order_review'); ?>
                         </div>
                     </form>
                     
-                     Success/Error Messages 
-                    <div id="form-messages" class="hidden mt-6">
-                        <div id="success-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative hidden" role="alert">
-                            <strong class="font-bold">¡Éxito!</strong>
-                            <span class="block sm:inline">Tu pago ha sido procesado correctamente.</span>
-                        </div>
-                        <div id="error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative hidden" role="alert">
-                            <strong class="font-bold">¡Error!</strong>
-                            <span class="block sm:inline">Hubo un problema al procesar tu pago. Por favor, verifica los datos e intenta de nuevo.</span>
-                        </div>
-                    </div>
-                </div> -->
-                
-                <!-- Security Badges -->
-                <!-- <div class="mt-8 bg-white rounded-lg shadow-custom p-8">
-                    <div class="flex flex-col items-center">
-                        <h3 class="text-lg font-semibold mb-4 text-center">Pago Seguro Garantizado</h3>
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <div class="flex items-center bg-gray-100 px-4 py-2 rounded">
-                                <i class="fas fa-lock text-primary mr-2"></i>
-                                <span class="text-sm">SSL Secure</span>
-                            </div>
-                            <div class="flex items-center bg-gray-100 px-4 py-2 rounded">
-                                <i class="fas fa-shield-alt text-primary mr-2"></i>
-                                <span class="text-sm">Protección al Comprador</span>
-                            </div>
-                            <div class="flex items-center bg-gray-100 px-4 py-2 rounded">
-                                <i class="fas fa-credit-card text-primary mr-2"></i>
-                                <span class="text-sm">Encriptación PCI DSS</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                    <?php
+                        // Acciones después del formulario de checkout
+                        do_action('woocommerce_after_checkout_form', $checkout);
+                    }
+                    ?>
+                </div>
             </div>
         </div>
+        
+        <?php
+        } else {
+            // Si no hay productos en el carrito o WooCommerce no está activo
+            echo '<div class="text-center py-16">';
+            echo '<h2 class="text-2xl font-bold mb-4">Tu carrito está vacío</h2>';
+            echo '<p class="text-gray-600 mb-8">Agrega algunos productos antes de proceder al checkout.</p>';
+            echo '<a href="' . esc_url(wc_get_page_permalink('shop')) . '" class="inline-block px-8 py-3 bg-secondary text-dark font-bold rounded-full hover:bg-yellow-400 transform hover:-translate-y-0.5 transition-all duration-300">Ir a la Tienda</a>';
+            echo '</div>';
+        }
+        ?>
     </div>
 </div>
 
 <style>
     @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     
     .animate-gradient {
@@ -442,185 +206,327 @@ get_header(); ?>
     .shadow-custom {
         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
     }
+    
+    /* Estilos personalizados para campos de WooCommerce */
+    .custom-checkout-form .form-row {
+        margin-bottom: 1.5rem;
+    }
+    
+    .custom-checkout-form .form-row label {
+        display: block;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .custom-checkout-form .form-row label .required {
+        color: #ef4444;
+    }
+    
+    .custom-checkout-form .input-text,
+    .custom-checkout-form select,
+    .custom-checkout-form textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background-color: white;
+    }
+    
+    .custom-checkout-form .input-text:focus,
+    .custom-checkout-form select:focus,
+    .custom-checkout-form textarea:focus {
+        outline: none;
+        border-color: transparent;
+        ring: 2px;
+        ring-color: var(--secondary-color, #fbbf24);
+        box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.5);
+    }
+    
+    .custom-checkout-form .form-row-wide {
+        width: 100%;
+    }
+    
+    .custom-checkout-form .form-row-first,
+    .custom-checkout-form .form-row-last {
+        width: 100%;
+    }
+    
+    /* Estilos para métodos de pago */
+    .woocommerce-checkout-payment .payment_methods {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .woocommerce-checkout-payment .payment_method {
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+    
+    .woocommerce-checkout-payment .payment_method label {
+        display: block;
+        padding: 1rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+    
+    .woocommerce-checkout-payment .payment_method label:hover {
+        background-color: #f9fafb;
+    }
+    
+    .woocommerce-checkout-payment .payment_method input[type="radio"] {
+        margin-right: 0.5rem;
+    }
+    
+    .woocommerce-checkout-payment .payment_method input[type="radio"]:checked + label {
+        background-color: rgba(251, 191, 36, 0.1);
+        border-color: var(--secondary-color, #fbbf24);
+    }
+    
+    .woocommerce-checkout-payment .payment_box {
+        padding: 1rem;
+        background-color: #f9fafb;
+        border-top: 1px solid #e5e7eb;
+    }
+    
+    /* Estilos para el botón de envío */
+    .woocommerce-checkout-payment #place_order {
+        width: 100%;
+        padding: 1rem 2rem;
+        background-color: var(--secondary-color, #fbbf24);
+        color: var(--dark-color, #1f2937);
+        font-weight: bold;
+        border: none;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+    
+    .woocommerce-checkout-payment #place_order:hover {
+        background-color: #f59e0b;
+        transform: translateY(-1px);
+    }
+    
+    .woocommerce-checkout-payment #place_order:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    /* Estilos para mensajes de error */
+    .woocommerce-error,
+    .woocommerce-message,
+    .woocommerce-info {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        border-left: 4px solid;
+    }
+    
+    .woocommerce-error {
+        background-color: #fef2f2;
+        border-left-color: #ef4444;
+        color: #991b1b;
+    }
+    
+    .woocommerce-message {
+        background-color: #f0fdf4;
+        border-left-color: #22c55e;
+        color: #166534;
+    }
+    
+    .woocommerce-info {
+        background-color: #eff6ff;
+        border-left-color: #3b82f6;
+        color: #1e40af;
+    }
+    
+    /* Estilos para el resumen del pedido */
+    .woocommerce-checkout-review-order-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .woocommerce-checkout-review-order-table th,
+    .woocommerce-checkout-review-order-table td {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+    }
+    
+    .woocommerce-checkout-review-order-table .order-total {
+        font-weight: bold;
+        font-size: 1.1rem;
+        border-bottom: none;
+    }
+    
+    .woocommerce-checkout-review-order-table .order-total .amount {
+        color: var(--primary-color, #0ea5e9);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .custom-checkout-form .form-row-first,
+        .custom-checkout-form .form-row-last {
+            width: 100%;
+            margin-right: 0;
+        }
+        
+        .payment-page .grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .lg\\:order-1 {
+            order: 2;
+        }
+        
+        .lg\\:order-2 {
+            order: 1;
+        }
+    }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('payment-form');
-    const formMessages = document.getElementById('form-messages');
-    const successMessage = document.getElementById('success-message');
-    const errorMessage = document.getElementById('error-message');
-    const creditCardForm = document.getElementById('credit-card-form');
-    const paypalForm = document.getElementById('paypal-form');
-    const bankTransferForm = document.getElementById('bank-transfer-form');
-    const shippingAddressDisplay = document.getElementById('shipping-address-display');
-    
-    // Payment method selection
-    const paymentMethods = document.querySelectorAll('input[name="payment_method"]');
-    paymentMethods.forEach(method => {
-        method.addEventListener('change', function() {
-            // Hide all payment forms first
-            creditCardForm.classList.add('hidden');
-            paypalForm.classList.add('hidden');
-            bankTransferForm.classList.add('hidden');
+    // Función para actualizar la revisión del pedido
+    function updateOrderReview() {
+        const orderReview = document.getElementById('order_review');
+        if (orderReview) {
+            const formData = new FormData();
+            formData.append('action', 'woocommerce_update_order_review');
             
-            // Show the selected payment form
-            if (this.value === 'credit_card') {
-                creditCardForm.classList.remove('hidden');
-            } else if (this.value === 'paypal') {
-                paypalForm.classList.remove('hidden');
-            } else if (this.value === 'bank_transfer') {
-                bankTransferForm.classList.remove('hidden');
-            }
-        });
-    });
-    
-    // Update shipping address display when user inputs address
-    const addressInputs = [
-        document.getElementById('address'),
-        document.getElementById('address2'),
-        document.getElementById('city'),
-        document.getElementById('state'),
-        document.getElementById('zip')
-    ];
-    
-    addressInputs.forEach(input => {
-        if (input) {
-            input.addEventListener('blur', updateShippingAddressDisplay);
-        }
-    });
-    
-    function updateShippingAddressDisplay() {
-        const address = document.getElementById('address').value;
-        const address2 = document.getElementById('address2').value;
-        const city = document.getElementById('city').value;
-        const state = document.getElementById('state');
-        const stateValue = state.value;
-        const stateText = state.options[state.selectedIndex]?.text || '';
-        const zip = document.getElementById('zip').value;
-        
-        if (address && city && stateValue && zip) {
-            let formattedAddress = address;
-            if (address2) formattedAddress += ', ' + address2;
-            formattedAddress += '<br>' + city + ', ' + stateText + '<br>' + zip;
-            
-            shippingAddressDisplay.innerHTML = formattedAddress;
-        }
-    }
-    
-    // Credit card input formatting
-    const cardNumberInput = document.getElementById('card_number');
-    if (cardNumberInput) {
-        cardNumberInput.addEventListener('input', function(e) {
-            // Remove non-digits
-            let value = this.value.replace(/\D/g, '');
-            
-            // Add spaces after every 4 digits
-            if (value.length > 0) {
-                value = value.match(/.{1,4}/g).join(' ');
+            // Obtener datos del formulario de checkout
+            const checkoutForm = document.querySelector('.woocommerce-checkout');
+            if (checkoutForm) {
+                const formInputs = checkoutForm.querySelectorAll('input, select, textarea');
+                formInputs.forEach(input => {
+                    if (input.name && input.value) {
+                        formData.append(input.name, input.value);
+                    }
+                });
             }
             
-            // Max length 19 (16 digits + 3 spaces)
-            if (value.length > 19) {
-                value = value.substring(0, 19);
-            }
-            
-            this.value = value;
-        });
-    }
-    
-    // Expiry date formatting (MM/YY)
-    const expiryDateInput = document.getElementById('expiry_date');
-    if (expiryDateInput) {
-        expiryDateInput.addEventListener('input', function(e) {
-            // Remove non-digits
-            let value = this.value.replace(/\D/g, '');
-            
-            // Add slash after month
-            if (value.length > 2) {
-                value = value.substring(0, 2) + '/' + value.substring(2, 4);
-            }
-            
-            // Max length 5 (MM/YY)
-            if (value.length > 5) {
-                value = value.substring(0, 5);
-            }
-            
-            this.value = value;
-        });
-    }
-    
-    // CVC formatting (3-4 digits)
-    const cvcInput = document.getElementById('cvc');
-    if (cvcInput) {
-        cvcInput.addEventListener('input', function(e) {
-            // Remove non-digits
-            let value = this.value.replace(/\D/g, '');
-            
-            // Max length 4 digits
-            if (value.length > 4) {
-                value = value.substring(0, 4);
-            }
-            
-            this.value = value;
-        });
-    }
-    
-    // Form submission
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Reset messages
-            formMessages.classList.add('hidden');
-            successMessage.classList.add('hidden');
-            errorMessage.classList.add('hidden');
-            
-            // Get form data
-            const formData = new FormData(form);
-            formData.append('action', 'process_payment_form');
-            
-            // Show loading state
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Procesando...';
-            
-            // Send AJAX request
-            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            fetch(wc_checkout_params.ajax_url, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                formMessages.classList.remove('hidden');
-                
-                if (data.success) {
-                    successMessage.classList.remove('hidden');
-                    form.reset();
-                    
-                    // Redirect to thank you page after 2 seconds
-                    setTimeout(function() {
-                        window.location.href = data.redirect || '<?php echo home_url('/gracias'); ?>';
-                    }, 2000);
-                } else {
-                    errorMessage.classList.remove('hidden');
-                    errorMessage.querySelector('span').textContent = data.message || 'Hubo un problema al procesar tu pago. Por favor, verifica los datos e intenta de nuevo.';
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newOrderReview = doc.getElementById('order_review');
+                if (newOrderReview) {
+                    orderReview.innerHTML = newOrderReview.innerHTML;
                 }
             })
             .catch(error => {
-                formMessages.classList.remove('hidden');
-                errorMessage.classList.remove('hidden');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                // Reset button state
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
+                console.error('Error updating order review:', error);
             });
-        });
+        }
     }
-});  //Please continue this code
+    
+    // Actualizar revisión del pedido cuando cambien los campos relevantes
+    const fieldsToWatch = [
+        'input[name^="billing_"]',
+        'input[name^="shipping_"]',
+        'select[name^="billing_"]',
+        'select[name^="shipping_"]',
+        'input[name="payment_method"]'
+    ];
+    
+    fieldsToWatch.forEach(selector => {
+        const fields = document.querySelectorAll(selector);
+        fields.forEach(field => {
+            field.addEventListener('change', updateOrderReview);
+            field.addEventListener('blur', updateOrderReview);
+        });
+    });
+    
+    // Mejorar la experiencia de usuario con los campos de pago
+    const paymentMethods = document.querySelectorAll('input[name="payment_method"]');
+    paymentMethods.forEach(method => {
+        method.addEventListener('change', function() {
+            // Remover clases activas de todos los métodos
+            paymentMethods.forEach(pm => {
+                const label = pm.closest('.payment_method').querySelector('label');
+                if (label) {
+                    label.style.backgroundColor = '';
+                    label.style.borderColor = '';
+                }
+            });
+            
+            // Agregar clase activa al método seleccionado
+            const selectedLabel = this.closest('.payment_method').querySelector('label');
+            if (selectedLabel) {
+                selectedLabel.style.backgroundColor = 'rgba(251, 191, 36, 0.1)';
+                selectedLabel.style.borderColor = 'var(--secondary-color, #fbbf24)';
+            }
+        });
+    });
+    
+    // Validación de campos en tiempo real
+    const requiredFields = document.querySelectorAll('.custom-checkout-form .validate-required input, .custom-checkout-form .validate-required select');
+    requiredFields.forEach(field => {
+        field.addEventListener('blur', function() {
+            const formRow = this.closest('.form-row');
+            if (formRow) {
+                if (this.value.trim() === '') {
+                    formRow.classList.add('woocommerce-invalid');
+                    this.style.borderColor = '#ef4444';
+                } else {
+                    formRow.classList.remove('woocommerce-invalid');
+                    this.style.borderColor = '#d1d5db';
+                }
+            }
+        });
+        
+        field.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                const formRow = this.closest('.form-row');
+                if (formRow) {
+                    formRow.classList.remove('woocommerce-invalid');
+                    this.style.borderColor = '#d1d5db';
+                }
+            }
+        });
+    });
+    
+    // Scroll suave al error si existe
+    const errorMessages = document.querySelectorAll('.woocommerce-error');
+    if (errorMessages.length > 0) {
+        errorMessages[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+});
+
+// Integrar con eventos de WooCommerce si están disponibles
+if (typeof jQuery !== 'undefined') {
+    jQuery(document).ready(function($) {
+        // Actualizar cuando WooCommerce actualice el checkout
+        $(document.body).on('updated_checkout', function() {
+            console.log('Checkout updated');
+            // Reinicializar funcionalidades personalizadas si es necesario
+        });
+        
+        // Manejar errores de validación
+        $(document.body).on('checkout_error', function() {
+            const firstError = $('.woocommerce-error, .woocommerce-invalid').first();
+            if (firstError.length) {
+                $('html, body').animate({
+                    scrollTop: firstError.offset().top - 100
+                }, 500);
+            }
+        });
+    });
+}
 </script>
 
 <?php get_footer(); ?>
